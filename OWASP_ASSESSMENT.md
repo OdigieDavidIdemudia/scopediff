@@ -1,4 +1,4 @@
-﻿# ScopeDiff â€” OWASP Top 10 (2021) Assessment
+# ScopeDiff — OWASP Top 10 (2021) Assessment
 
 **Assessment date:** 2026-11-16  
 **Target:** https://scopediff.web.app  
@@ -25,7 +25,7 @@
 
 ---
 
-## A01 â€” Broken Access Control â€” PASS
+## A01 — Broken Access Control — PASS
 
 **Evidence**
 
@@ -40,9 +40,9 @@
 - Rules validate watch creation: owner UID, matching document ID, pending status, supported platform, 30/60-minute interval, and a supported HTTPS program URL.
 - Internal FastAPI endpoints now refuse to run in non-demo mode unless `SCOPEDIFF_INTERNAL_TOKEN` is configured.
 
-**Residual note:** the onboarding-complete flag is self-asserted by the client. It only gates UI state and does not grant access to another userâ€™s data.
+**Residual note:** the onboarding-complete flag is self-asserted by the client. It only gates UI state and does not grant access to another user's data.
 
-## A02 â€” Cryptographic Failures â€” PASS
+## A02 — Cryptographic Failures — PASS
 
 **Evidence**
 
@@ -56,7 +56,7 @@
 
 **Residual note:** the Slack webhook is stored as plaintext in Firestore. It is access-controlled, but a compromised admin/worker credential could read it. Use a secret manager if this becomes multi-tenant production.
 
-## A03 â€” Injection â€” PASS
+## A03 — Injection — PASS
 
 **Evidence**
 
@@ -68,7 +68,7 @@
 - No shell execution, `subprocess`, `os.system`, pickle or unsafe YAML loading exists in the application path.
 - Search/filter code operates on already-loaded values; no query language is constructed from user input.
 
-## A04 â€” Insecure Design â€” PARTIAL
+## A04 — Insecure Design — PARTIAL
 
 **Passing controls**
 
@@ -85,11 +85,11 @@
 - The 10-watch limit is enforced by the client and the cron, not atomically by Firestore rules. A malicious user can create many queued documents directly; the cron will reject them but Firestore storage/abuse is still possible.
 - `onboarding_complete` can be set by the user on their own profile. This is a UX gate, not a security boundary.
 - There is no per-IP/per-account rate limit on account creation or program queueing beyond Firebase/platform quotas.
-- Free-plan cron cadence is 30 minutes, so â€œfreshnessâ€ is best-effort.
+- Free-plan cron cadence is 30 minutes, so "freshness" is best-effort.
 
 **Recommendation:** enforce a per-user watch counter document in a transaction, add App Check or a small rate-limit layer, and add a server-side onboarding claim if onboarding must be a security boundary.
 
-## A05 ? Security Misconfiguration ? PARTIAL
+## A05 — Security Misconfiguration — PARTIAL
 
 **Passing controls**
 
@@ -115,7 +115,7 @@
 
 **Recommendation:** enforce App Check with reCAPTCHA Enterprise, restrict the API key to the required APIs and HTTP referrers, and add budget/rate alerts for the Gemini Developer API.
 
-## A06 â€” Vulnerable and Outdated Components â€” PASS
+## A06 — Vulnerable and Outdated Components — PASS
 
 **Evidence**
 
@@ -127,7 +127,7 @@
 
 **Residual note:** Python requirements use minimum-version ranges rather than hash-pinned lock files. For production, generate a lock file with hashes.
 
-## A07 â€” Identification and Authentication Failures â€” PARTIAL
+## A07 — Identification and Authentication Failures — PARTIAL
 
 **Passing controls**
 
@@ -141,14 +141,14 @@
 **Gaps**
 
 - Email verification is not required before using the app.
-- The 8-character password rule is enforced only in the client; Firebaseâ€™s project-level password policy is not configured more strictly.
+- The 8-character password rule is enforced only in the client; Firebase's project-level password policy is not configured more strictly.
 - MFA is not enabled.
-- Firebaseâ€™s default auth error messages can reveal whether an email exists.
-- No account lockout/rate-limit layer beyond Firebaseâ€™s built-in protections.
+- Firebase's default auth error messages can reveal whether an email exists.
+- No account lockout/rate-limit layer beyond Firebase's built-in protections.
 
 **Recommendation:** require `emailVerified` for email/password accounts, configure a Firebase password policy, enable MFA for team accounts, and enable email enumeration protection.
 
-## A08 â€” Software and Data Integrity Failures â€” PARTIAL
+## A08 — Software and Data Integrity Failures — PARTIAL
 
 **Passing controls**
 
@@ -162,12 +162,12 @@
 
 - GitHub Actions are pinned to mutable major tags (`actions/checkout@v4`, `actions/setup-python@v5`) rather than commit SHAs.
 - Python dependencies are not hash-pinned.
-- Google Fonts are loaded from a third-party origin without Subresource Integrity (the CSP limits the origin, but SRI is not available for Googleâ€™s dynamic font CSS).
+- Google Fonts are loaded from a third-party origin without Subresource Integrity (the CSP limits the origin, but SRI is not available for Google's dynamic font CSS).
 - No automated dependency-update or secret-scanning policy is documented in the repo.
 
 **Recommendation:** pin Actions to commit SHAs, add Dependabot/Renovate, generate a hashed Python lock file, and add a secret-scanning pre-commit hook.
 
-## A09 â€” Security Logging and Monitoring Failures â€” FAIL
+## A09 — Security Logging and Monitoring Failures — FAIL
 
 **Evidence**
 
@@ -184,7 +184,7 @@
 
 **Recommendation:** add a health-check workflow that fails loudly, send a Slack/email alert on cron failure, enable Cloud Audit Logs for Firestore/Auth, and add Sentry or an equivalent for the frontend/worker.
 
-## A10 â€” Server-Side Request Forgery â€” PASS
+## A10 — Server-Side Request Forgery — PASS
 
 **Evidence**
 
@@ -192,7 +192,7 @@
 - The cron re-parses every queued URL through `parse_program_url`; unknown hosts are rejected before any adapter is chosen.
 - Adapters use fixed HTTPS base URLs with fixed path templates. The user does not supply an arbitrary fetch URL.
 - The direct watch schema is validated by Firestore rules to the supported platforms and HTTPS hosts.
-- The optional FastAPI workerâ€™s `/internal/sync` takes a platform and handle, not a URL.
+- The optional FastAPI worker's `/internal/sync` takes a platform and handle, not a URL.
 - The free-plan cron rejects the optional `sandbox` adapter; fixture path traversal is not reachable from the public flow.
 
 **Residual note:** if the FastAPI worker is deployed later with the sandbox adapter, validate the sandbox handle and fixture path to prevent local file traversal.

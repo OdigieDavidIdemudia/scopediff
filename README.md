@@ -2,7 +2,8 @@
 
 **Know what changed before you test.**
 
-**Live demo:** [https://scopediff.web.app](https://scopediff.web.app)
+**Live demo:** [https://scopediff.web.app](https://scopediff.web.app)  
+**Publication:** [https://odigiedavididemudia.github.io/scopediff-publication/](https://odigiedavididemudia.github.io/scopediff-publication/)
 
 ScopeDiff watches bug bounty scopes across Bugcrowd, HackerOne and Intigriti, stores every
 published revision, and tells hunters exactly what changed — added targets, removed targets,
@@ -65,7 +66,7 @@ diff → score → persist → notify. That is deliberate. Cron handles timing; 
 handles truth.
 
 **Free-plan trade-offs:** the cron cadence is 30 minutes (GitHub Actions minimum practical
-schedule), the Slack “test alert” button is disabled, and the FastAPI worker is not hosted.
+schedule), the Slack "test alert" button is disabled, and the FastAPI worker is not hosted.
 The FastAPI code remains in the repo for an optional future Cloud Run deployment.
 
 ## Three-minute demo script
@@ -295,13 +296,14 @@ Invoke-RestMethod -Method Post `
 
 - **Firebase Hosting:** deployed to project `scopediff`.
 - **Public URL:** [https://scopediff.web.app](https://scopediff.web.app)
+- **Publication:** [https://odigiedavididemudia.github.io/scopediff-publication/](https://odigiedavididemudia.github.io/scopediff-publication/) - static GitHub Pages technical record.
 - **Auth:** email/password + Google enabled.
 - **Firestore:** database, rules and indexes deployed.
 - **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device preference configured.
 - **Live data:** browser reads/writes Firestore directly; no paid worker API.
 - **Cron:** public GitHub repo with a 30-minute Actions workflow.
 - **Repo:** [OdigieDavidIdemudia/scopediff](https://github.com/OdigieDavidIdemudia/scopediff) (public).
-- **Security assessment:** [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md) — 6 pass, 3 partial, 1 fail.
+- **Security assessment:** [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md) — 5 pass, 4 partial, 1 fail.
 - **Submission story:** [SUBMISSION.md](SUBMISSION.md).
 - **Not deployed:** Cloud Run / Cloud Scheduler. Those require Blaze billing and are
   intentionally left out of the free-plan build.
@@ -431,7 +433,7 @@ deterministic.
   available without a paid scheduler.
 - Queued baselines wait for the next cron run. There is no immediate fetch on the public
   free build.
-- The Slack “test alert” button is disabled on the free build; real alerts are sent by the
+- The Slack "test alert" button is disabled on the free build; real alerts are sent by the
   cron after a detected change.
 - Email digest is stored as a preference only.
 - HackerOne requires user-supplied credentials; they live in GitHub Actions secrets.
