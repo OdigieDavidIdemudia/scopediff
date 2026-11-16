@@ -22,7 +22,7 @@ export const firebaseEnabled = Boolean(
 
 let appPromise: Promise<FirebaseApp> | null = null;
 
-async function getFirebaseApp(): Promise<FirebaseApp> {
+export async function getFirebaseApp(): Promise<FirebaseApp> {
   if (!appPromise) {
     appPromise = import("firebase/app").then(({ initializeApp, getApps, getApp }) => {
       if (getApps().length) return getApp();

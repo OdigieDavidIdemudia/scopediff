@@ -14,14 +14,14 @@
 | A02 | Cryptographic Failures | **PASS** |
 | A03 | Injection | **PASS** |
 | A04 | Insecure Design | **PARTIAL** |
-| A05 | Security Misconfiguration | **PASS** |
+| A05 | Security Misconfiguration | **PARTIAL** |
 | A06 | Vulnerable and Outdated Components | **PASS** |
 | A07 | Identification and Authentication Failures | **PARTIAL** |
 | A08 | Software and Data Integrity Failures | **PARTIAL** |
 | A09 | Security Logging and Monitoring Failures | **FAIL** |
 | A10 | Server-Side Request Forgery | **PASS** |
 
-**Overall:** no critical or high-severity exploitable finding was identified in the deployed free-plan attack surface. The failed category is operational logging/monitoring, not a direct data breach. The partials are hardening gaps that should be addressed before a large public launch.
+**Overall:** no critical or high-severity exploitable finding was identified in the deployed free-plan attack surface. The failed category is operational logging/monitoring, not a direct data breach. The partials are hardening gaps that should be addressed before a large public launch. The hybrid-AI addition is covered in a separate LLM overlay below.
 
 ---
 
@@ -89,9 +89,9 @@
 
 **Recommendation:** enforce a per-user watch counter document in a transaction, add App Check or a small rate-limit layer, and add a server-side onboarding claim if onboarding must be a security boundary.
 
-## A05 â€” Security Misconfiguration â€” PASS
+## A05 ? Security Misconfiguration ? PARTIAL
 
-**Evidence**
+**Passing controls**
 
 - Production response headers verified:
   - `Content-Security-Policy`
@@ -100,15 +100,20 @@
   - `Referrer-Policy: strict-origin-when-cross-origin`
   - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
   - `Strict-Transport-Security`
-- CSP permits Firebase Auth, Firestore, Google Sign-In and Google Fonts while denying object embeds and framing.
+- CSP permits Firebase Auth, Firestore, Firebase AI Logic, Google Sign-In and Google Fonts while denying object embeds and framing.
 - Google Sign-In popup was verified to open the Firebase auth handler under the deployed CSP.
 - Firestore rules are deployed and compiled successfully.
 - Email/password and Google providers are enabled; anonymous auth is not used.
 - The production build does not enable the local insecure-auth preview.
 - The free-plan deployment does not expose the FastAPI worker or internal endpoints.
-- `SCOPEDIFF_ALLOW_INSECURE_AUTH` exists for local tests but is not enabled in the deployed frontend or GitHub Actions.
 
-**Residual note:** Firebase Auth currently includes localhost in its authorized domains for local development. This is normal for Firebase projects but should be reviewed if the project is shared with untrusted collaborators.
+**Gaps**
+
+- Firebase App Check is not enforced. The Firebase web API key can be used to call the AI Logic endpoint from outside the app unless App Check and API-key restrictions are added.
+- The web API key's API restrictions have not been narrowed to only the APIs ScopeDiff uses.
+- Firebase Auth currently includes localhost in its authorized domains for local development. This is normal for a Firebase project, but should be reviewed if the project is shared with untrusted collaborators.
+
+**Recommendation:** enforce App Check with reCAPTCHA Enterprise, restrict the API key to the required APIs and HTTP referrers, and add budget/rate alerts for the Gemini Developer API.
 
 ## A06 â€” Vulnerable and Outdated Components â€” PASS
 
@@ -194,6 +199,23 @@
 
 ---
 
+## AI-specific risk overlay (OWASP LLM Top 10)
+
+The hybrid AI feature adds a model-backed analyst. It does not execute model output or call tools.
+
+| Risk | Result | Notes |
+|---|---|---|
+| LLM01 Prompt injection | **PARTIAL** | Scope metadata is untrusted public content. A malicious program could embed instruction-like text. The prompt is constrained, the output is structured JSON, and the model has no tools or write access. |
+| LLM02 Insecure output handling | **PASS** | Output is parsed as JSON, validated into fixed fields, and rendered as React text. No HTML or tool execution. |
+| LLM04 Model DoS / abuse | **PARTIAL** | No App Check or per-user AI quota yet. Gemini free-tier quotas and browser execution limits reduce but do not remove abuse risk. |
+| LLM05 Supply-chain | **PASS** | Official Firebase AI Logic SDK, no third-party model gateway, no custom model weights. |
+| LLM06 Sensitive information disclosure | **PASS** | Prompt excludes email, Slack webhook, UID and private testing targets. Only public scope-diff metadata is sent. |
+| LLM07 Insecure plugin design | **PASS** | No plugins, tools or function-calling are exposed to the model. |
+| LLM09 Misinformation | **PARTIAL** | UI labels the output as AI-generated, includes caveats and tells the user to verify the published revision. |
+| LLM10 Model theft | **N/A** | No model is hosted or distributed by ScopeDiff. |
+
+**Privacy design:** when Chrome supports the on-device model, the prompt runs locally. Otherwise the SDK automatically falls back to Gemini in the cloud. The UI reports whether the response came from `ON_DEVICE` or `IN_CLOUD`.
+
 ## Security test evidence
 
 | Test | Result |
@@ -207,10 +229,14 @@
 | `npm audit --omit=dev` | **0 vulnerabilities** |
 | `pip-audit` on worker requirements | **No known vulnerabilities** |
 | Secret scan of tracked files/history | No HackerOne token or private key tracked |
+| Hybrid AI cloud fallback | **Success — response source `in_cloud`** |
+| Hybrid AI on-device preference | `InferenceMode.PREFER_ON_DEVICE` configured |
+| AI prompt data minimisation | No email, UID, Slack webhook or private testing targets sent |
+| AI output handling | Structured JSON parsed and React-escaped; no tools |
 | Backend tests | **51 passed** |
 | Production web build | Passes |
 
 ## Bottom line
 
-**Submission-ready free-plan build:** yes, with the caveats above. The public surface has no identified critical/high exploitable access-control, injection, SSRF or dependency issue. The main missing operational control is monitoring/alerting (A09), and the main hardening gaps are account verification/password policy (A07) and supply-chain pinning (A08).
+**Submission-ready free-plan build:** yes, with the caveats above. The public surface has no identified critical/high exploitable access-control, injection, SSRF or dependency issue. The main missing operational control is monitoring/alerting (A09). The main hardening gaps are App Check/API-key restrictions for AI usage (A05), account verification/password policy (A07), and supply-chain pinning (A08). The hybrid AI path is functional and reports whether the response came from on-device or cloud inference; prompt injection remains a bounded partial risk because scope metadata is untrusted public content.
 

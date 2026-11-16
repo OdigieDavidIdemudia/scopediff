@@ -70,6 +70,7 @@ I originally planned Cloud Run + Cloud Scheduler, but the project is intentional
 - **Free-plan constraints.** Cloud Run and Cloud Scheduler require billing, so I replaced them with a Firestore-first app and a GitHub Actions cron. The trade-off is a 30-minute cadence and queued baselines instead of instant fetching.
 - **Security boundaries.** Users write only their own profile and queued watches. Global program data is read-only. Firestore rules validate watch ownership, status, platform, interval and URL shape.
 - **Trustworthy provenance.** Every diff links back to the published revision and source revision ID, and every run is recorded.
+- **Hybrid inference is a product decision, not a checkbox.** The AI feature sends only public diff metadata, labels its source, and keeps the deterministic diff as the source of truth. The model explains; it does not decide.
 
 ### What I learned
 
@@ -193,6 +194,7 @@ Recommended order:
 - The public demo uses a fictional sandbox program with RFC 2606 domains and RFC 5737 ranges.
 - Live accounts use real public program metadata only when the user adds a supported URL.
 - The HackerOne token is configured in GitHub Actions secrets, not in the client.
+- AI Logic uses the Gemini Developer API on the Spark plan. On-device inference is Chrome-on-Desktop only; other browsers automatically use the cloud fallback.
 - The repository is public for judging. HackerOne credentials and the Firebase service account live only in GitHub Actions secrets.
 - The security assessment is in [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md).
 

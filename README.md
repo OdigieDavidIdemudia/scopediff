@@ -23,6 +23,8 @@ version history and surfaces the delta.
 
 - A feed of 6 seeded changes with impact, confidence, materiality and personal-impact
   matching.
+- A **hybrid AI Diff Analyst** that prefers on-device inference in Chrome and automatically
+  falls back to Gemini in the cloud.
 - Four fictional programs across Bugcrowd, HackerOne, Intigriti and a sandbox.
 - A hidden **v8** sandbox revision. Click **Simulate scope change** and the real diff engine
   produces:
@@ -295,6 +297,7 @@ Invoke-RestMethod -Method Post `
 - **Public URL:** [https://scopediff.web.app](https://scopediff.web.app)
 - **Auth:** email/password + Google enabled.
 - **Firestore:** database, rules and indexes deployed.
+- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device preference configured.
 - **Live data:** browser reads/writes Firestore directly; no paid worker API.
 - **Cron:** public GitHub repo with a 30-minute Actions workflow.
 - **Repo:** [OdigieDavidIdemudia/scopediff](https://github.com/OdigieDavidIdemudia/scopediff) (public).
@@ -437,6 +440,8 @@ deterministic.
   would need a collection-group index and pagination at scale.
 - The sandbox simulator is a demo tool, not a production admin surface.
 - Firestore client persistence can take several seconds on the first live paint.
+- On-device web inference is Chrome-on-Desktop only; other browsers use cloud fallback.
+- Firebase App Check and API-key restrictions are not yet enforced for the AI endpoint.
 
 ## Safety and ethics
 
@@ -448,14 +453,14 @@ an attack tool.
 ## Security
 
 The OWASP Top 10 (2021) assessment is in [`OWASP_ASSESSMENT.md`](OWASP_ASSESSMENT.md).
-Result: **6 pass, 3 partial, 1 fail**. The failed category is operational
+Result: **5 pass, 4 partial, 1 fail**. The failed category is operational
 logging/monitoring. Dependency audit is clean after the React Router and gRPC upgrades.
 Production security headers, Firestore access-control tests and secret-scan evidence are
 recorded in that document.
 
 ## Demo video
 
-A 2:15 narrated demo video is generated at `scopediff-demo.mp4` (not committed). The
+A 2:39 narrated demo video is generated at `scopediff-demo.mp4` (not committed). The
 three-minute script and shot list live in [`SUBMISSION.md`](SUBMISSION.md). Upload the MP4
 to YouTube or Vimeo and paste the URL into the submission form and `SUBMISSION.md`.
 

@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import type { ChangeItem } from "../types";
 import { useApp } from "../state/AppStore";
+import { analyzeDiff, onDeviceAvailability, type DiffInsight } from "../lib/ai";
 import {
   AlertStatusChip,
   Callout,
@@ -106,6 +108,31 @@ export function ChangePage() {
     .slice(0, 4);
   const instruction = items.find((item) => item.after?.instruction || item.before?.instruction);
 
+  const [aiInsight, setAiInsight] = useState<DiffInsight | null>(null);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+  const [onDevice, setOnDevice] = useState("checking");
+
+  useEffect(() => {
+    setAiInsight(null);
+    setAiError(null);
+    void onDeviceAvailability().then(setOnDevice);
+  }, [change.id]);
+
+  async function runAi() {
+    setAiBusy(true);
+    setAiError(null);
+    try {
+      const result = await analyzeDiff(change!, items);
+      setAiInsight(result);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      setAiError(message);
+    } finally {
+      setAiBusy(false);
+    }
+  }
+
   return (
     <>
       <nav className="breadcrumbs" aria-label="Breadcrumb">
@@ -171,6 +198,124 @@ export function ChangePage() {
             </ul>
           </div>
         </div>
+      </section>
+
+      <section className="ai-analyst">
+        <div className="ai-analyst__head">
+          <div>
+            <div className="page-header__eyebrow">Hybrid AI Diff Analyst</div>
+            <h2>Turn this diff into a testing plan.</h2>
+            <p className="card__sub">
+              Runs on-device when Chrome supports the local model, with automatic cloud
+              fallback. Only this diff’s public target metadata is sent — never your email,
+              Slack webhook or testing targets.
+            </p>
+          </div>
+          <div className="ai-analyst__chips">
+            <span className="chip chip--accent">On-device preferred</span>
+            <span className="chip">
+              {onDevice === "available"
+                ? "On-device ready"
+                : onDevice === "downloadable" || onDevice === "downloading"
+                  ? "Downloading local model"
+                  : "Cloud fallback likely"}
+            </span>
+          </div>
+        </div>
+
+        {!aiInsight && !aiBusy && (
+          <div className="ai-analyst__empty">
+            <p>
+              Get a concise explanation of what changed, why it matters, and which permitted
+              areas to review first.
+            </p>
+            <button type="button" className="button button--primary" onClick={() => void runAi()}>
+              Analyze this diff
+            </button>
+          </div>
+        )}
+
+        {aiBusy && (
+          <div className="ai-analyst__loading" role="status" aria-live="polite">
+            <span className="dot dot--warn" />
+            Running hybrid inference… this can take longer on the first on-device model download.
+          </div>
+        )}
+
+        {aiError && (
+          <div className="ai-analyst__error" role="alert">
+            <strong>Hybrid AI is not available yet.</strong>
+            <p>{aiError}</p>
+            <p className="field-note">
+              The deterministic diff above is complete and unaffected. Enable Firebase AI Logic
+              to use the analyst.
+            </p>
+            <button type="button" className="button button--sm" onClick={() => void runAi()}>
+              Retry
+            </button>
+          </div>
+        )}
+
+        {aiInsight && (
+          <div className="ai-analyst__result">
+            <div className="ai-analyst__source">
+              <span
+                className={cn(
+                  "chip",
+                  aiInsight.inferenceSource === "ON_DEVICE" ? "chip--green" : "chip--yellow",
+                )}
+              >
+                {aiInsight.inferenceSource === "ON_DEVICE"
+                  ? "On-device inference"
+                  : aiInsight.inferenceSource === "IN_CLOUD"
+                    ? "Cloud fallback"
+                    : "Inference source unknown"}
+              </span>
+              <span className="field-note">{aiInsight.latencyMs} ms</span>
+              <button
+                type="button"
+                className="link-button"
+                onClick={() => void runAi()}
+                disabled={aiBusy}
+              >
+                Regenerate
+              </button>
+            </div>
+
+            <div className="ai-analyst__block">
+              <div className="label">Summary</div>
+              <p>{aiInsight.summary}</p>
+            </div>
+            <div className="ai-analyst__block">
+              <div className="label">Why it matters</div>
+              <p>{aiInsight.why_it_matters}</p>
+            </div>
+            {aiInsight.review_first.length > 0 && (
+              <div className="ai-analyst__block">
+                <div className="label">Review first</div>
+                <ol className="ai-list">
+                  {aiInsight.review_first.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ol>
+              </div>
+            )}
+            {aiInsight.caveats.length > 0 && (
+              <div className="ai-analyst__block">
+                <div className="label">Caveats</div>
+                <ul className="ai-list ai-list--muted">
+                  {aiInsight.caveats.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <p className="field-note">
+              AI-generated from this diff only. Verify against the published revision before
+              testing. This is not a vulnerability finding.
+            </p>
+          </div>
+        )}
       </section>
 
       {change.confidence === "low" && (
