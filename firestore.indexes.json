@@ -1,0 +1,113 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "program_id", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "platform", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "impact", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "confidence", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "platform", "order": "ASCENDING" },
+        { "fieldPath": "impact", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "program_id", "order": "ASCENDING" },
+        { "fieldPath": "platform", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "program_id", "order": "ASCENDING" },
+        { "fieldPath": "impact", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "changes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "platform", "order": "ASCENDING" },
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "detected_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "watches",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "active", "order": "ASCENDING" },
+        { "fieldPath": "next_check_at", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "watches",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "program_id", "order": "ASCENDING" },
+        { "fieldPath": "active", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "watches",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "next_check_at", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "watches",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "active", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

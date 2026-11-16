@@ -1,0 +1,12 @@
+fastapi>=0.110
+uvicorn>=0.29
+pydantic>=2.6
+requests>=2.31
+python-dotenv>=1.0
+pytest>=8.0
+httpx>=0.27
+
+# Production persistence, auth verification and scheduled user watches.
+firebase-admin>=6.5
+google-cloud-firestore>=2.14
+google-cloud-storage>=2.14

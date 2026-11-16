@@ -1,0 +1,24 @@
+#1
+
+heuristic
+
+ScopeDiff
+Watches bug bounty scopes and tells hunters exactly what changed, before they waste a weekend.
+
+
+
+Problem
+Scope changes silently across HackerOne, Bugcrowd and Intigriti. Hunters test removed assets and miss newly added ones.
+
+MVP
+One worker for two platforms, versioned scope diff, email/Slack alert, a web feed with filters. No scanning, no exploitation.
+
+Demo
+Show a program, simulate a scope change, then show the alert and the exact diff it produced.
+
+Stack
+FastAPI
+Postgres
+React
+APScheduler
+Slack webhook

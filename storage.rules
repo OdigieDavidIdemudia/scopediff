@@ -1,0 +1,16 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Large scope snapshots are uploaded by the worker with the Admin SDK.
+    // The browser never writes to Storage.
+    match /snapshots/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

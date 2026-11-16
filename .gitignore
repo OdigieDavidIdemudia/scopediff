@@ -1,0 +1,38 @@
+# dependencies
+node_modules/
+web/node_modules/
+
+# build output
+web/dist/
+dist/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# local runtime data and secrets
+worker/.data/
+.env
+.env.local
+web/.env
+web/.env.local
+
+# Firebase / deployment logs
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Playwright output
+.playwright-mcp/
+
+# editor and OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

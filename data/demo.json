@@ -1,0 +1,6309 @@
+{
+  "meta": {
+    "title": "ScopeDiff demo dataset",
+    "generated_at": "2026-11-16T10:00:00Z",
+    "demo": true,
+    "sandbox": true,
+    "note": "All targets use RFC 2606 reserved domains and RFC 5737 test ranges. The three platform programs are seeded examples, not live programs."
+  },
+  "viewer": {
+    "name": "Demo Hunter",
+    "handle": "demo",
+    "testing": [
+      "api.acme.example",
+      "*.acme.example",
+      "com.acme.cloud"
+    ],
+    "watchlist": [
+      "sandbox__acme-cloud",
+      "hackerone__initech-demo"
+    ]
+  },
+  "platforms": [
+    {
+      "id": "bugcrowd",
+      "name": "Bugcrowd",
+      "status": "ok",
+      "last_run_at": "2026-11-16T08:40:01Z",
+      "programs_count": 1,
+      "latency_ms": 430,
+      "message": "Demo snapshot · 1 program"
+    },
+    {
+      "id": "hackerone",
+      "name": "HackerOne",
+      "status": "ok",
+      "last_run_at": "2026-11-16T08:41:01Z",
+      "programs_count": 1,
+      "latency_ms": 610,
+      "message": "Demo snapshot · 1 program"
+    },
+    {
+      "id": "intigriti",
+      "name": "Intigriti",
+      "status": "ok",
+      "last_run_at": "2026-11-16T08:42:01Z",
+      "programs_count": 1,
+      "latency_ms": 520,
+      "message": "Demo snapshot · 1 program"
+    },
+    {
+      "id": "sandbox",
+      "name": "Sandbox",
+      "status": "ok",
+      "last_run_at": "2026-11-16T08:45:01Z",
+      "programs_count": 1,
+      "latency_ms": 8,
+      "message": "Sandbox · current revision v7"
+    }
+  ],
+  "programs": [
+    {
+      "id": "sandbox__acme-cloud",
+      "platform": "sandbox",
+      "handle": "acme-cloud",
+      "name": "Acme Cloud (Sandbox)",
+      "url": "https://example.com/sandbox/acme-cloud",
+      "status": "open",
+      "industry": "Cloud infrastructure",
+      "offers_bounties": true,
+      "currency": "USD",
+      "min_bounty": 100,
+      "max_bounty": 10000,
+      "tags": [
+        "sandbox",
+        "cloud",
+        "api"
+      ],
+      "current_version": 7,
+      "current_hash": "d952cf63dc1e0d918df302168837253c4a7328fad592bae52804df6c44534cf4",
+      "scope_counts": {
+        "in_scope": 13,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 14,
+        "bounty_eligible": 13
+      },
+      "first_seen_at": "2026-08-04T10:06:00Z",
+      "last_checked_at": "2026-11-16T08:45:00Z",
+      "last_changed_at": "2026-11-02T10:21:00Z",
+      "source": {
+        "adapter": "sandbox",
+        "revision_id": "rev-7",
+        "published_at": "2026-11-02T10:15:00Z",
+        "fetched_at": "2026-11-16T08:45:00Z",
+        "url": "https://example.com/sandbox/acme-cloud/revisions/7"
+      }
+    },
+    {
+      "id": "bugcrowd__globex-demo",
+      "platform": "bugcrowd",
+      "handle": "globex-demo",
+      "name": "Globex API (Demo)",
+      "url": "https://example.com/demo/globex-demo",
+      "status": "open",
+      "industry": "Developer tools",
+      "offers_bounties": true,
+      "currency": "USD",
+      "min_bounty": 100,
+      "max_bounty": 10000,
+      "tags": [
+        "demo"
+      ],
+      "current_version": 1,
+      "current_hash": "429238c2f96c256f699dc67b52c5c3534803345fd7e390ffdf9c187e27a0d578",
+      "scope_counts": {
+        "in_scope": 4,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 5,
+        "bounty_eligible": 4
+      },
+      "first_seen_at": "2026-10-01T09:00:00Z",
+      "last_checked_at": "2026-11-16T08:40:00Z",
+      "last_changed_at": null,
+      "source": {
+        "adapter": "bugcrowd",
+        "revision_id": "seed-1",
+        "published_at": "2026-10-01T08:55:00Z",
+        "fetched_at": "2026-11-16T08:40:00Z",
+        "url": "https://example.com/demo/globex-demo/revisions/1"
+      }
+    },
+    {
+      "id": "hackerone__initech-demo",
+      "platform": "hackerone",
+      "handle": "initech-demo",
+      "name": "Initech Mobile (Demo)",
+      "url": "https://example.com/demo/initech-demo",
+      "status": "open",
+      "industry": "Fintech",
+      "offers_bounties": true,
+      "currency": "USD",
+      "min_bounty": 100,
+      "max_bounty": 6000,
+      "tags": [
+        "demo"
+      ],
+      "current_version": 1,
+      "current_hash": "40edd720d7ccbe48e4fcbfb430bb8cbd6d7e22b444dd3899dec6d9322bc1dac3",
+      "scope_counts": {
+        "in_scope": 4,
+        "out_of_scope": 0,
+        "conflict": 0,
+        "total": 4,
+        "bounty_eligible": 4
+      },
+      "first_seen_at": "2026-10-01T09:00:00Z",
+      "last_checked_at": "2026-11-16T08:40:00Z",
+      "last_changed_at": null,
+      "source": {
+        "adapter": "hackerone",
+        "revision_id": "seed-1",
+        "published_at": "2026-10-01T08:55:00Z",
+        "fetched_at": "2026-11-16T08:40:00Z",
+        "url": "https://example.com/demo/initech-demo/revisions/1"
+      }
+    },
+    {
+      "id": "intigriti__umbrella-labs-demo",
+      "platform": "intigriti",
+      "handle": "umbrella-labs-demo",
+      "name": "Umbrella Labs (Demo)",
+      "url": "https://example.com/demo/umbrella-labs-demo",
+      "status": "open",
+      "industry": "Security",
+      "offers_bounties": true,
+      "currency": "USD",
+      "min_bounty": 100,
+      "max_bounty": 3000,
+      "tags": [
+        "demo"
+      ],
+      "current_version": 1,
+      "current_hash": "77e0cf56afa0e3c338ad0fe71d5e05585a7be8be190df03c9544d44e4fa41f2c",
+      "scope_counts": {
+        "in_scope": 4,
+        "out_of_scope": 0,
+        "conflict": 0,
+        "total": 4,
+        "bounty_eligible": 4
+      },
+      "first_seen_at": "2026-10-01T09:00:00Z",
+      "last_checked_at": "2026-11-16T08:40:00Z",
+      "last_changed_at": null,
+      "source": {
+        "adapter": "intigriti",
+        "revision_id": "seed-1",
+        "published_at": "2026-10-01T08:55:00Z",
+        "fetched_at": "2026-11-16T08:40:00Z",
+        "url": "https://example.com/demo/umbrella-labs-demo/revisions/1"
+      }
+    }
+  ],
+  "versions": [
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 1,
+      "hash": "6b616264108874cbe1cc244b25b137bdc92221d884969464251e0c5207c47ff4",
+      "captured_at": "2026-08-04T10:06:00Z",
+      "source_revision_id": "rev-1",
+      "source_published_at": "2026-08-04T10:00:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/1",
+      "is_baseline": true,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 9,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 10,
+        "bounty_eligible": 9
+      },
+      "change_id": null
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 2,
+      "hash": "422bd2d4d2bf298c69878b04beebcb1b565b6c585d55809154468393db4ca400",
+      "captured_at": "2026-08-21T14:16:00Z",
+      "source_revision_id": "rev-2",
+      "source_published_at": "2026-08-21T14:10:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/2",
+      "is_baseline": false,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 10,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 11,
+        "bounty_eligible": 9
+      },
+      "change_id": "sandbox__acme-cloud__v2"
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 3,
+      "hash": "dad63d2e957dc6a44a11ec6a8974fe9cd9ffe7883fffdd59578005f61b6564b0",
+      "captured_at": "2026-09-08T11:36:00Z",
+      "source_revision_id": "rev-3",
+      "source_published_at": "2026-09-08T11:30:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/3",
+      "is_baseline": false,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 11
+      },
+      "change_id": "sandbox__acme-cloud__v3"
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 4,
+      "hash": "e2c3127df71529b7989d6b903d429b73113e4106302abddd39948dd8a9202878",
+      "captured_at": "2026-09-22T16:11:00Z",
+      "source_revision_id": "rev-4",
+      "source_published_at": "2026-09-22T16:05:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/4",
+      "is_baseline": false,
+      "confidence": "low",
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 11
+      },
+      "change_id": "sandbox__acme-cloud__v4"
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 5,
+      "hash": "aa73ae317faced679edd8b7dd60383827a43e0e7ee794ea708b73c775cdc32df",
+      "captured_at": "2026-10-06T09:51:00Z",
+      "source_revision_id": "rev-5",
+      "source_published_at": "2026-10-06T09:45:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/5",
+      "is_baseline": false,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 11
+      },
+      "change_id": "sandbox__acme-cloud__v5"
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 6,
+      "hash": "d4ef9f0adf733a330e0636de609ce931f39202b3e9565bd544c5ece2241a38bd",
+      "captured_at": "2026-10-19T13:26:00Z",
+      "source_revision_id": "rev-6",
+      "source_published_at": "2026-10-19T13:20:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/6",
+      "is_baseline": false,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 12
+      },
+      "change_id": "sandbox__acme-cloud__v6"
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 7,
+      "hash": "d952cf63dc1e0d918df302168837253c4a7328fad592bae52804df6c44534cf4",
+      "captured_at": "2026-11-02T10:21:00Z",
+      "source_revision_id": "rev-7",
+      "source_published_at": "2026-11-02T10:15:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/7",
+      "is_baseline": false,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 13,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 14,
+        "bounty_eligible": 13
+      },
+      "change_id": "sandbox__acme-cloud__v7"
+    },
+    {
+      "program_id": "bugcrowd__globex-demo",
+      "version": 1,
+      "hash": "429238c2f96c256f699dc67b52c5c3534803345fd7e390ffdf9c187e27a0d578",
+      "captured_at": "2026-10-01T09:00:00Z",
+      "source_revision_id": "seed-1",
+      "source_published_at": "2026-10-01T08:55:00Z",
+      "source_url": "https://example.com/demo/globex-demo/revisions/1",
+      "is_baseline": true,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 4,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 5,
+        "bounty_eligible": 4
+      },
+      "change_id": null
+    },
+    {
+      "program_id": "hackerone__initech-demo",
+      "version": 1,
+      "hash": "40edd720d7ccbe48e4fcbfb430bb8cbd6d7e22b444dd3899dec6d9322bc1dac3",
+      "captured_at": "2026-10-01T09:00:00Z",
+      "source_revision_id": "seed-1",
+      "source_published_at": "2026-10-01T08:55:00Z",
+      "source_url": "https://example.com/demo/initech-demo/revisions/1",
+      "is_baseline": true,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 4,
+        "out_of_scope": 0,
+        "conflict": 0,
+        "total": 4,
+        "bounty_eligible": 4
+      },
+      "change_id": null
+    },
+    {
+      "program_id": "intigriti__umbrella-labs-demo",
+      "version": 1,
+      "hash": "77e0cf56afa0e3c338ad0fe71d5e05585a7be8be190df03c9544d44e4fa41f2c",
+      "captured_at": "2026-10-01T09:00:00Z",
+      "source_revision_id": "seed-1",
+      "source_published_at": "2026-10-01T08:55:00Z",
+      "source_url": "https://example.com/demo/umbrella-labs-demo/revisions/1",
+      "is_baseline": true,
+      "confidence": "high",
+      "counts": {
+        "in_scope": 4,
+        "out_of_scope": 0,
+        "conflict": 0,
+        "total": 4,
+        "bounty_eligible": 4
+      },
+      "change_id": null
+    }
+  ],
+  "snapshots": [
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 1,
+      "hash": "6b616264108874cbe1cc244b25b137bdc92221d884969464251e0c5207c47ff4",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "ip|192.0.2.10",
+          "family": "ip",
+          "kind": "in",
+          "target": "192.0.2.10",
+          "display": "Edge host",
+          "source_ids": [
+            "acme-192-0-2-10"
+          ],
+          "groups": [
+            {
+              "id": "grp-platform",
+              "name": "Platform",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "ip"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-platform",
+          "name": "Platform",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-08-04T10:06:00Z",
+      "source_revision_id": "rev-1",
+      "source_published_at": "2026-08-04T10:00:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/1",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 9,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 10,
+        "bounty_eligible": 9
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 2,
+      "hash": "422bd2d4d2bf298c69878b04beebcb1b565b6c585d55809154468393db4ca400",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 6000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "ip|192.0.2.10",
+          "family": "ip",
+          "kind": "in",
+          "target": "192.0.2.10",
+          "display": "Edge host",
+          "source_ids": [
+            "acme-192-0-2-10"
+          ],
+          "groups": [
+            {
+              "id": "grp-platform",
+              "name": "Platform",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "ip"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-platform",
+          "name": "Platform",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-08-21T14:16:00Z",
+      "source_revision_id": "rev-2",
+      "source_published_at": "2026-08-21T14:10:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/2",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 10,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 11,
+        "bounty_eligible": 9
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 3,
+      "hash": "dad63d2e957dc6a44a11ec6a8974fe9cd9ffe7883fffdd59578005f61b6564b0",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 6000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "ip|192.0.2.10",
+          "family": "ip",
+          "kind": "in",
+          "target": "192.0.2.10",
+          "display": "Edge host",
+          "source_ids": [
+            "acme-192-0-2-10"
+          ],
+          "groups": [
+            {
+              "id": "grp-platform",
+              "name": "Platform",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "ip"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://cdn.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "source_ids": [
+            "acme-cdn-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://support.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "source_ids": [
+            "acme-support-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-platform",
+          "name": "Platform",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-09-08T11:36:00Z",
+      "source_revision_id": "rev-3",
+      "source_published_at": "2026-09-08T11:30:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/3",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 11
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 4,
+      "hash": "e2c3127df71529b7989d6b903d429b73113e4106302abddd39948dd8a9202878",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 9000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "ip|192.0.2.10",
+          "family": "ip",
+          "kind": "in",
+          "target": "192.0.2.10",
+          "display": "Edge host",
+          "source_ids": [
+            "acme-192-0-2-10"
+          ],
+          "groups": [
+            {
+              "id": "grp-platform",
+              "name": "Platform",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "ip"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://cdn.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "source_ids": [
+            "acme-cdn-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://support.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "source_ids": [
+            "acme-support-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-platform",
+          "name": "Platform",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-09-22T16:11:00Z",
+      "source_revision_id": "rev-4",
+      "source_published_at": "2026-09-22T16:05:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/4",
+      "confidence": "low",
+      "complete": false,
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 11
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 5,
+      "hash": "aa73ae317faced679edd8b7dd60383827a43e0e7ee794ea708b73c775cdc32df",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 9000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://cdn.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "source_ids": [
+            "acme-cdn-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://dashboard.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://dashboard.acme.example",
+          "display": "Customer dashboard",
+          "source_ids": [
+            "acme-dashboard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://support.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "source_ids": [
+            "acme-support-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-10-06T09:51:00Z",
+      "source_revision_id": "rev-5",
+      "source_published_at": "2026-10-06T09:45:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/5",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 11
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 6,
+      "hash": "d4ef9f0adf733a330e0636de609ce931f39202b3e9565bd544c5ece2241a38bd",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 9000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://cdn.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "source_ids": [
+            "acme-cdn-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://dashboard.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://dashboard.acme.example",
+          "display": "Customer dashboard",
+          "source_ids": [
+            "acme-dashboard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 1500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://support.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "source_ids": [
+            "acme-support-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 5000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-10-19T13:26:00Z",
+      "source_revision_id": "rev-6",
+      "source_published_at": "2026-10-19T13:20:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/6",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 12,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 13,
+        "bounty_eligible": 12
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 7,
+      "hash": "d952cf63dc1e0d918df302168837253c4a7328fad592bae52804df6c44534cf4",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://cdn.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "source_ids": [
+            "acme-cdn-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://dashboard.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://dashboard.acme.example",
+          "display": "Customer dashboard",
+          "source_ids": [
+            "acme-dashboard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://legacy.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://legacy.acme.example",
+          "display": "Legacy portal",
+          "source_ids": [
+            "acme-legacy-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-legacy",
+              "name": "Legacy",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://partner.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://partner.acme.example",
+          "display": "Partner portal",
+          "source_ids": [
+            "acme-partner-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 1500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://support.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "source_ids": [
+            "acme-support-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 5000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-legacy",
+          "name": "Legacy",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-11-02T10:21:00Z",
+      "source_revision_id": "rev-7",
+      "source_published_at": "2026-11-02T10:15:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/7",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 13,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 14,
+        "bounty_eligible": 13
+      }
+    },
+    {
+      "program_id": "sandbox__acme-cloud",
+      "version": 8,
+      "hash": "a085cb063a9bd9d5e6aecc61310bac2f559779d3ed4799fd3374e2ba5e759526",
+      "assets": [
+        {
+          "key": "api|https://api.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "source_ids": [
+            "acme-api-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "api|https://api.staging.acme.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.staging.acme.example",
+          "display": "Staging API",
+          "source_ids": [
+            "acme-api-staging-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-staging",
+              "name": "Staging",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": "Use the seeded staging tenant. Never test production checkout.",
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.acme.cloud",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.acme.cloud",
+          "display": "Acme Cloud for Android",
+          "source_ids": [
+            "acme-com-acme-cloud"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|1234567890",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "1234567890",
+          "display": "Acme Cloud for iOS",
+          "source_ids": [
+            "acme-1234567890"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile",
+              "name": "Mobile",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "source_code|https://github.com/acme/cloud-sdk",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/acme/cloud-sdk",
+          "display": "Cloud SDK",
+          "source_ids": [
+            "acme-github-com-acme-cloud-sdk"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://admin.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://admin.acme.example",
+          "display": "Admin console",
+          "source_ids": [
+            "acme-admin-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://cdn.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "source_ids": [
+            "acme-cdn-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://dashboard.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://dashboard.acme.example",
+          "display": "Customer dashboard",
+          "source_ids": [
+            "acme-dashboard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://partner.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://partner.acme.example",
+          "display": "Partner portal",
+          "source_ids": [
+            "acme-partner-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "source_ids": [
+            "acme-status-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 1500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://support.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "source_ids": [
+            "acme-support-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://www.acme.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "source_ids": [
+            "acme-www-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 5000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "source_ids": [
+            "acme-wildcard-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.staging.acme.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.staging.acme.example",
+          "display": "Staging wildcard",
+          "source_ids": [
+            "acme-wildcard-staging-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-staging",
+              "name": "Staging",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 5000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": "Staging only. Rate limit: 5 req/s.",
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.acme.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.acme.example",
+          "display": "Docs (out of scope)",
+          "source_ids": [
+            "acme-docs-acme-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile",
+          "name": "Mobile",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-staging",
+          "name": "Staging",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-11-16T09:15:00Z",
+      "source_revision_id": "rev-8",
+      "source_published_at": "2026-11-16T09:09:00Z",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/8",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 14,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 15,
+        "bounty_eligible": 14
+      }
+    },
+    {
+      "program_id": "bugcrowd__globex-demo",
+      "version": 1,
+      "hash": "429238c2f96c256f699dc67b52c5c3534803345fd7e390ffdf9c187e27a0d578",
+      "assets": [
+        {
+          "key": "api|https://api.globex.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.globex.example",
+          "display": "Globex API",
+          "source_ids": [
+            "globex-api-globex-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "cidr|198.51.100.0/24",
+          "family": "cidr",
+          "kind": "in",
+          "target": "198.51.100.0/24",
+          "display": "Edge range",
+          "source_ids": [
+            "globex-198-51-100-0-24"
+          ],
+          "groups": [
+            {
+              "id": "grp-platform",
+              "name": "Platform",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "cidr"
+            ]
+          }
+        },
+        {
+          "key": "web|https://status.globex.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://status.globex.example",
+          "display": "Status page",
+          "source_ids": [
+            "globex-status-globex-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.globex.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.globex.example",
+          "display": "Globex wildcard",
+          "source_ids": [
+            "globex-wildcard-globex-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        },
+        {
+          "key": "web|https://docs.globex.example",
+          "family": "web",
+          "kind": "out",
+          "target": "https://docs.globex.example",
+          "display": "Docs",
+          "source_ids": [
+            "globex-docs-globex-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-out",
+              "name": "Out of scope",
+              "in_scope": false,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": null,
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-out",
+          "name": "Out of scope",
+          "in_scope": false,
+          "tier": null
+        },
+        {
+          "id": "grp-platform",
+          "name": "Platform",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-10-01T09:00:00Z",
+      "source_revision_id": "seed-1",
+      "source_published_at": "2026-10-01T08:55:00Z",
+      "source_url": "https://example.com/demo/globex-demo/revisions/1",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 4,
+        "out_of_scope": 1,
+        "conflict": 0,
+        "total": 5,
+        "bounty_eligible": 4
+      }
+    },
+    {
+      "program_id": "hackerone__initech-demo",
+      "version": 1,
+      "hash": "40edd720d7ccbe48e4fcbfb430bb8cbd6d7e22b444dd3899dec6d9322bc1dac3",
+      "assets": [
+        {
+          "key": "api|https://api.initech.example",
+          "family": "api",
+          "kind": "in",
+          "target": "https://api.initech.example",
+          "display": "Initech API",
+          "source_ids": [
+            "initech-api-initech-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 6000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "api"
+            ]
+          }
+        },
+        {
+          "key": "mobile_android|com.initech.app",
+          "family": "mobile_android",
+          "kind": "in",
+          "target": "com.initech.app",
+          "display": "Initech for Android",
+          "source_ids": [
+            "initech-com-initech-app"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile-apps",
+              "name": "Mobile apps",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_android"
+            ]
+          }
+        },
+        {
+          "key": "mobile_ios|987654321",
+          "family": "mobile_ios",
+          "kind": "in",
+          "target": "987654321",
+          "display": "Initech for iOS",
+          "source_ids": [
+            "initech-987654321"
+          ],
+          "groups": [
+            {
+              "id": "grp-mobile-apps",
+              "name": "Mobile apps",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "mobile_ios"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.initech.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.initech.example",
+          "display": "Initech wildcard",
+          "source_ids": [
+            "initech-wildcard-initech-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-api",
+              "name": "API",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 6000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-api",
+          "name": "API",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-mobile-apps",
+          "name": "Mobile apps",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-10-01T09:00:00Z",
+      "source_revision_id": "seed-1",
+      "source_published_at": "2026-10-01T08:55:00Z",
+      "source_url": "https://example.com/demo/initech-demo/revisions/1",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 4,
+        "out_of_scope": 0,
+        "conflict": 0,
+        "total": 4,
+        "bounty_eligible": 4
+      }
+    },
+    {
+      "program_id": "intigriti__umbrella-labs-demo",
+      "version": 1,
+      "hash": "77e0cf56afa0e3c338ad0fe71d5e05585a7be8be190df03c9544d44e4fa41f2c",
+      "assets": [
+        {
+          "key": "source_code|https://github.com/umbrella/lab",
+          "family": "source_code",
+          "kind": "in",
+          "target": "https://github.com/umbrella/lab",
+          "display": "Lab tooling",
+          "source_ids": [
+            "umbrella-github-com-umbrella-lab"
+          ],
+          "groups": [
+            {
+              "id": "grp-source",
+              "name": "Source",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "source_code"
+            ]
+          }
+        },
+        {
+          "key": "web|https://portal.umbrella.example",
+          "family": "web",
+          "kind": "in",
+          "target": "https://portal.umbrella.example",
+          "display": "Research portal",
+          "source_ids": [
+            "umbrella-portal-umbrella-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "web|https://portal.umbrella.example/admin",
+          "family": "web",
+          "kind": "in",
+          "target": "https://portal.umbrella.example/admin",
+          "display": "Admin surface",
+          "source_ids": [
+            "umbrella-portal-umbrella-example-admin"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 1000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "web"
+            ]
+          }
+        },
+        {
+          "key": "wildcard|*.umbrella.example",
+          "family": "wildcard",
+          "kind": "in",
+          "target": "*.umbrella.example",
+          "display": "Research wildcard",
+          "source_ids": [
+            "umbrella-wildcard-umbrella-example"
+          ],
+          "groups": [
+            {
+              "id": "grp-core",
+              "name": "Core web",
+              "in_scope": true,
+              "tier": null
+            }
+          ],
+          "attrs": {
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "tags": [
+              "wildcard"
+            ]
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "grp-core",
+          "name": "Core web",
+          "in_scope": true,
+          "tier": null
+        },
+        {
+          "id": "grp-source",
+          "name": "Source",
+          "in_scope": true,
+          "tier": null
+        }
+      ],
+      "captured_at": "2026-10-01T09:00:00Z",
+      "source_revision_id": "seed-1",
+      "source_published_at": "2026-10-01T08:55:00Z",
+      "source_url": "https://example.com/demo/umbrella-labs-demo/revisions/1",
+      "confidence": "high",
+      "complete": true,
+      "counts": {
+        "in_scope": 4,
+        "out_of_scope": 0,
+        "conflict": 0,
+        "total": 4,
+        "bounty_eligible": 4
+      }
+    }
+  ],
+  "changes": [
+    {
+      "id": "sandbox__acme-cloud__v2",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 1,
+      "to_version": 2,
+      "detected_at": "2026-08-21T14:16:00Z",
+      "source_published_at": "2026-08-21T14:10:00Z",
+      "source_revision_id": "rev-2",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/2",
+      "is_baseline": false,
+      "is_simulation": false,
+      "confidence": "high",
+      "impact": "mixed",
+      "magnitude": "medium",
+      "materiality_score": 45,
+      "reasons": [
+        "reward tier downgraded (Tier 1 → Tier 2)",
+        "max bounty reduced",
+        "new in-scope asset",
+        "2 targets affected"
+      ],
+      "counts": {
+        "added": 1,
+        "removed": 0,
+        "reintroduced": 0,
+        "modified": 1,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 2
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_76d2faf62e3f6aef",
+          "change_id": "sandbox__acme-cloud__v2",
+          "kind": "modified",
+          "asset_key": "api|https://api.acme.example",
+          "family": "api",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "before": {
+            "target": "Public API",
+            "canonical": "https://api.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "after": {
+            "target": "Public API",
+            "canonical": "https://api.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 6000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "fields": [
+            {
+              "field": "bounty_tier",
+              "label": "Reward tier",
+              "before": "Tier 1",
+              "after": "Tier 2"
+            },
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": 8000,
+              "after": 6000
+            }
+          ],
+          "impact": "risk",
+          "materiality_score": 42,
+          "reasons": [
+            "reward tier downgraded (Tier 1 → Tier 2)",
+            "max bounty reduced"
+          ],
+          "group_names": [
+            "API"
+          ]
+        },
+        {
+          "id": "ci_ddbb9ca5c0da64bf",
+          "change_id": "sandbox__acme-cloud__v2",
+          "kind": "added",
+          "asset_key": "web|https://status.acme.example",
+          "family": "web",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "before": null,
+          "after": {
+            "target": "Public status page",
+            "canonical": "https://status.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 30,
+          "reasons": [
+            "new in-scope asset"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "skipped",
+      "alerted_at": null,
+      "alert_error": null
+    },
+    {
+      "id": "sandbox__acme-cloud__v3",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 2,
+      "to_version": 3,
+      "detected_at": "2026-09-08T11:36:00Z",
+      "source_published_at": "2026-09-08T11:30:00Z",
+      "source_revision_id": "rev-3",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/3",
+      "is_baseline": false,
+      "is_simulation": false,
+      "confidence": "high",
+      "impact": "opportunity",
+      "magnitude": "high",
+      "materiality_score": 58,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty",
+        "2 targets affected"
+      ],
+      "counts": {
+        "added": 2,
+        "removed": 0,
+        "reintroduced": 0,
+        "modified": 0,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 2
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_8f6ba1fb199a6534",
+          "change_id": "sandbox__acme-cloud__v3",
+          "kind": "added",
+          "asset_key": "web|https://cdn.acme.example",
+          "family": "web",
+          "target": "https://cdn.acme.example",
+          "display": "CDN origin",
+          "before": null,
+          "after": {
+            "target": "CDN origin",
+            "canonical": "https://cdn.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 55,
+          "reasons": [
+            "new in-scope asset",
+            "bounty eligible",
+            "Tier 2 reward",
+            "high max bounty"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        },
+        {
+          "id": "ci_b051b7db077de16d",
+          "change_id": "sandbox__acme-cloud__v3",
+          "kind": "added",
+          "asset_key": "web|https://support.acme.example",
+          "family": "web",
+          "target": "https://support.acme.example",
+          "display": "Support portal",
+          "before": null,
+          "after": {
+            "target": "Support portal",
+            "canonical": "https://support.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 45,
+          "reasons": [
+            "new in-scope asset",
+            "bounty eligible"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "skipped",
+      "alerted_at": null,
+      "alert_error": null
+    },
+    {
+      "id": "sandbox__acme-cloud__v4",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 3,
+      "to_version": 4,
+      "detected_at": "2026-09-22T16:11:00Z",
+      "source_published_at": "2026-09-22T16:05:00Z",
+      "source_revision_id": "rev-4",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/4",
+      "is_baseline": false,
+      "is_simulation": false,
+      "confidence": "low",
+      "impact": "opportunity",
+      "magnitude": "low",
+      "materiality_score": 18,
+      "reasons": [
+        "Partial fetch — one page was retried",
+        "max bounty increased",
+        "2 targets affected"
+      ],
+      "counts": {
+        "added": 0,
+        "removed": 0,
+        "reintroduced": 0,
+        "modified": 2,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 2
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_1629b280f6a37afa",
+          "change_id": "sandbox__acme-cloud__v4",
+          "kind": "modified",
+          "asset_key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "before": {
+            "target": "Production wildcard",
+            "canonical": "*.acme.example",
+            "family": "wildcard",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "wildcard"
+            ]
+          },
+          "after": {
+            "target": "Production wildcard",
+            "canonical": "*.acme.example",
+            "family": "wildcard",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "wildcard"
+            ]
+          },
+          "fields": [
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": 8000,
+              "after": 10000
+            }
+          ],
+          "impact": "opportunity",
+          "materiality_score": 15,
+          "reasons": [
+            "max bounty increased"
+          ],
+          "group_names": [
+            "API"
+          ]
+        },
+        {
+          "id": "ci_62be32353963c3ad",
+          "change_id": "sandbox__acme-cloud__v4",
+          "kind": "modified",
+          "asset_key": "api|https://api.acme.example",
+          "family": "api",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "before": {
+            "target": "Public API",
+            "canonical": "https://api.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 6000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "after": {
+            "target": "Public API",
+            "canonical": "https://api.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 9000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "fields": [
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": 6000,
+              "after": 9000
+            }
+          ],
+          "impact": "opportunity",
+          "materiality_score": 15,
+          "reasons": [
+            "max bounty increased"
+          ],
+          "group_names": [
+            "API"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "skipped",
+      "alerted_at": null,
+      "alert_error": null
+    },
+    {
+      "id": "sandbox__acme-cloud__v5",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 4,
+      "to_version": 5,
+      "detected_at": "2026-10-06T09:51:00Z",
+      "source_published_at": "2026-10-06T09:45:00Z",
+      "source_revision_id": "rev-5",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/5",
+      "is_baseline": false,
+      "is_simulation": false,
+      "confidence": "high",
+      "impact": "mixed",
+      "magnitude": "high",
+      "materiality_score": 58,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty",
+        "in-scope asset removed",
+        "bounty-eligible target lost",
+        "2 targets affected"
+      ],
+      "counts": {
+        "added": 1,
+        "removed": 1,
+        "reintroduced": 0,
+        "modified": 0,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 2
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_3bda5ac0ffc096e7",
+          "change_id": "sandbox__acme-cloud__v5",
+          "kind": "added",
+          "asset_key": "web|https://dashboard.acme.example",
+          "family": "web",
+          "target": "https://dashboard.acme.example",
+          "display": "Customer dashboard",
+          "before": null,
+          "after": {
+            "target": "Customer dashboard",
+            "canonical": "https://dashboard.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 55,
+          "reasons": [
+            "new in-scope asset",
+            "bounty eligible",
+            "Tier 2 reward",
+            "high max bounty"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        },
+        {
+          "id": "ci_b01794e37fa183b8",
+          "change_id": "sandbox__acme-cloud__v5",
+          "kind": "removed",
+          "asset_key": "ip|192.0.2.10",
+          "family": "ip",
+          "target": "192.0.2.10",
+          "display": "Edge host",
+          "before": {
+            "target": "Edge host",
+            "canonical": "192.0.2.10",
+            "family": "ip",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Platform"
+            ],
+            "tags": [
+              "ip"
+            ]
+          },
+          "after": null,
+          "fields": [],
+          "impact": "risk",
+          "materiality_score": 53,
+          "reasons": [
+            "in-scope asset removed",
+            "bounty-eligible target lost",
+            "Tier 2 reward"
+          ],
+          "group_names": [
+            "Platform"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "sent",
+      "alerted_at": "2026-10-06T09:52:00Z",
+      "alert_error": null
+    },
+    {
+      "id": "sandbox__acme-cloud__v6",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 5,
+      "to_version": 6,
+      "detected_at": "2026-10-19T13:26:00Z",
+      "source_published_at": "2026-10-19T13:20:00Z",
+      "source_revision_id": "rev-6",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/6",
+      "is_baseline": false,
+      "is_simulation": false,
+      "confidence": "high",
+      "impact": "opportunity",
+      "magnitude": "high",
+      "materiality_score": 60,
+      "reasons": [
+        "bounty eligibility added",
+        "reward tier changed",
+        "max bounty increased",
+        "reward currency changed",
+        "reward tier upgraded (Tier 2 → Tier 1)",
+        "2 targets affected"
+      ],
+      "counts": {
+        "added": 0,
+        "removed": 0,
+        "reintroduced": 0,
+        "modified": 2,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 2
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_6b8e6878efa9930e",
+          "change_id": "sandbox__acme-cloud__v6",
+          "kind": "modified",
+          "asset_key": "web|https://status.acme.example",
+          "family": "web",
+          "target": "https://status.acme.example",
+          "display": "Public status page",
+          "before": {
+            "target": "Public status page",
+            "canonical": "https://status.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": false,
+            "bounty_tier": null,
+            "max_bounty": null,
+            "currency": null,
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "after": {
+            "target": "Public status page",
+            "canonical": "https://status.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 1500,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [
+            {
+              "field": "bounty_eligible",
+              "label": "Bounty eligible",
+              "before": false,
+              "after": true
+            },
+            {
+              "field": "bounty_tier",
+              "label": "Reward tier",
+              "before": null,
+              "after": "Tier 2"
+            },
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": null,
+              "after": 1500
+            },
+            {
+              "field": "currency",
+              "label": "Currency",
+              "before": null,
+              "after": "USD"
+            }
+          ],
+          "impact": "mixed",
+          "materiality_score": 57,
+          "reasons": [
+            "bounty eligibility added",
+            "reward tier changed",
+            "max bounty increased",
+            "reward currency changed"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        },
+        {
+          "id": "ci_cf514187476db8de",
+          "change_id": "sandbox__acme-cloud__v6",
+          "kind": "modified",
+          "asset_key": "web|https://www.acme.example",
+          "family": "web",
+          "target": "https://www.acme.example",
+          "display": "Marketing site",
+          "before": {
+            "target": "Marketing site",
+            "canonical": "https://www.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 4000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "after": {
+            "target": "Marketing site",
+            "canonical": "https://www.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 5000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [
+            {
+              "field": "bounty_tier",
+              "label": "Reward tier",
+              "before": "Tier 2",
+              "after": "Tier 1"
+            },
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": 4000,
+              "after": 5000
+            }
+          ],
+          "impact": "opportunity",
+          "materiality_score": 23,
+          "reasons": [
+            "reward tier upgraded (Tier 2 → Tier 1)",
+            "max bounty increased"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "sent",
+      "alerted_at": "2026-10-19T13:27:00Z",
+      "alert_error": null
+    },
+    {
+      "id": "sandbox__acme-cloud__v7",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 6,
+      "to_version": 7,
+      "detected_at": "2026-11-02T10:21:00Z",
+      "source_published_at": "2026-11-02T10:15:00Z",
+      "source_revision_id": "rev-7",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/7",
+      "is_baseline": false,
+      "is_simulation": false,
+      "confidence": "high",
+      "impact": "mixed",
+      "magnitude": "high",
+      "materiality_score": 58,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty",
+        "max bounty reduced",
+        "2 targets affected"
+      ],
+      "counts": {
+        "added": 1,
+        "removed": 0,
+        "reintroduced": 0,
+        "modified": 1,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 2
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_bfc18e86909f156e",
+          "change_id": "sandbox__acme-cloud__v7",
+          "kind": "added",
+          "asset_key": "web|https://partner.acme.example",
+          "family": "web",
+          "target": "https://partner.acme.example",
+          "display": "Partner portal",
+          "before": null,
+          "after": {
+            "target": "Partner portal",
+            "canonical": "https://partner.acme.example",
+            "family": "web",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "Core web"
+            ],
+            "tags": [
+              "web"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 55,
+          "reasons": [
+            "new in-scope asset",
+            "bounty eligible",
+            "Tier 2 reward",
+            "high max bounty"
+          ],
+          "group_names": [
+            "Core web"
+          ]
+        },
+        {
+          "id": "ci_1191e9501d180568",
+          "change_id": "sandbox__acme-cloud__v7",
+          "kind": "modified",
+          "asset_key": "api|https://api.acme.example",
+          "family": "api",
+          "target": "https://api.acme.example",
+          "display": "Public API",
+          "before": {
+            "target": "Public API",
+            "canonical": "https://api.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 9000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "after": {
+            "target": "Public API",
+            "canonical": "https://api.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 8000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "fields": [
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": 9000,
+              "after": 8000
+            }
+          ],
+          "impact": "risk",
+          "materiality_score": 30,
+          "reasons": [
+            "max bounty reduced"
+          ],
+          "group_names": [
+            "API"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "sent",
+      "alerted_at": "2026-11-02T10:22:00Z",
+      "alert_error": null
+    },
+    {
+      "id": "sandbox__acme-cloud__v8",
+      "program_id": "sandbox__acme-cloud",
+      "program_name": "Acme Cloud (Sandbox)",
+      "platform": "sandbox",
+      "program_url": "https://example.com/sandbox/acme-cloud",
+      "from_version": 7,
+      "to_version": 8,
+      "detected_at": "2026-11-16T09:15:00Z",
+      "source_published_at": "2026-11-16T09:09:00Z",
+      "source_revision_id": "rev-8",
+      "source_url": "https://example.com/sandbox/acme-cloud/revisions/8",
+      "is_baseline": false,
+      "is_simulation": true,
+      "confidence": "high",
+      "impact": "mixed",
+      "magnitude": "critical",
+      "materiality_score": 91,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "wildcard coverage",
+        "Tier 1 reward",
+        "high max bounty",
+        "Tier 2 reward",
+        "4 targets affected"
+      ],
+      "counts": {
+        "added": 2,
+        "removed": 1,
+        "reintroduced": 0,
+        "modified": 1,
+        "moved_in": 0,
+        "moved_out": 0,
+        "total": 4
+      },
+      "status": "ready",
+      "items_preview": [
+        {
+          "id": "ci_ac53e2165e6a2e6a",
+          "change_id": "sandbox__acme-cloud__v8",
+          "kind": "added",
+          "asset_key": "wildcard|*.staging.acme.example",
+          "family": "wildcard",
+          "target": "*.staging.acme.example",
+          "display": "Staging wildcard",
+          "before": null,
+          "after": {
+            "target": "Staging wildcard",
+            "canonical": "*.staging.acme.example",
+            "family": "wildcard",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 5000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": "Staging only. Rate limit: 5 req/s.",
+            "groups": [
+              "Staging"
+            ],
+            "tags": [
+              "wildcard"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 82,
+          "reasons": [
+            "new in-scope asset",
+            "bounty eligible",
+            "wildcard coverage",
+            "Tier 1 reward",
+            "high max bounty"
+          ],
+          "group_names": [
+            "Staging"
+          ]
+        },
+        {
+          "id": "ci_24d240165458912e",
+          "change_id": "sandbox__acme-cloud__v8",
+          "kind": "added",
+          "asset_key": "api|https://api.staging.acme.example",
+          "family": "api",
+          "target": "https://api.staging.acme.example",
+          "display": "Staging API",
+          "before": null,
+          "after": {
+            "target": "Staging API",
+            "canonical": "https://api.staging.acme.example",
+            "family": "api",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 2",
+            "max_bounty": 3000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": "Use the seeded staging tenant. Never test production checkout.",
+            "groups": [
+              "Staging"
+            ],
+            "tags": [
+              "api"
+            ]
+          },
+          "fields": [],
+          "impact": "opportunity",
+          "materiality_score": 57,
+          "reasons": [
+            "new in-scope asset",
+            "bounty eligible",
+            "Tier 2 reward",
+            "high max bounty"
+          ],
+          "group_names": [
+            "Staging"
+          ]
+        },
+        {
+          "id": "ci_9cfd0b7cf60ba661",
+          "change_id": "sandbox__acme-cloud__v8",
+          "kind": "modified",
+          "asset_key": "wildcard|*.acme.example",
+          "family": "wildcard",
+          "target": "*.acme.example",
+          "display": "Production wildcard",
+          "before": {
+            "target": "Production wildcard",
+            "canonical": "*.acme.example",
+            "family": "wildcard",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 1",
+            "max_bounty": 10000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "wildcard"
+            ]
+          },
+          "after": {
+            "target": "Production wildcard",
+            "canonical": "*.acme.example",
+            "family": "wildcard",
+            "kind": "in",
+            "bounty_eligible": true,
+            "bounty_tier": "Tier 3",
+            "max_bounty": 2000,
+            "currency": "USD",
+            "max_severity": "critical",
+            "instruction": null,
+            "groups": [
+              "API"
+            ],
+            "tags": [
+              "wildcard"
+            ]
+          },
+          "fields": [
+            {
+              "field": "bounty_tier",
+              "label": "Reward tier",
+              "before": "Tier 1",
+              "after": "Tier 3"
+            },
+            {
+              "field": "max_bounty",
+              "label": "Max bounty",
+              "before": 10000,
+              "after": 2000
+            }
+          ],
+          "impact": "risk",
+          "materiality_score": 54,
+          "reasons": [
+            "reward tier downgraded (Tier 1 → Tier 3)",
+            "max bounty reduced"
+          ],
+          "group_names": [
+            "API"
+          ]
+        }
+      ],
+      "items": [],
+      "alert_status": "sent",
+      "alerted_at": "2026-11-16T09:16:00Z",
+      "alert_error": null,
+      "hidden": true
+    }
+  ],
+  "items": [
+    {
+      "id": "ci_76d2faf62e3f6aef",
+      "change_id": "sandbox__acme-cloud__v2",
+      "kind": "modified",
+      "asset_key": "api|https://api.acme.example",
+      "family": "api",
+      "target": "https://api.acme.example",
+      "display": "Public API",
+      "before": {
+        "target": "Public API",
+        "canonical": "https://api.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 1",
+        "max_bounty": 8000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "after": {
+        "target": "Public API",
+        "canonical": "https://api.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 6000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "fields": [
+        {
+          "field": "bounty_tier",
+          "label": "Reward tier",
+          "before": "Tier 1",
+          "after": "Tier 2"
+        },
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": 8000,
+          "after": 6000
+        }
+      ],
+      "impact": "risk",
+      "materiality_score": 42,
+      "reasons": [
+        "reward tier downgraded (Tier 1 → Tier 2)",
+        "max bounty reduced"
+      ],
+      "group_names": [
+        "API"
+      ]
+    },
+    {
+      "id": "ci_ddbb9ca5c0da64bf",
+      "change_id": "sandbox__acme-cloud__v2",
+      "kind": "added",
+      "asset_key": "web|https://status.acme.example",
+      "family": "web",
+      "target": "https://status.acme.example",
+      "display": "Public status page",
+      "before": null,
+      "after": {
+        "target": "Public status page",
+        "canonical": "https://status.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": false,
+        "bounty_tier": null,
+        "max_bounty": null,
+        "currency": null,
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 30,
+      "reasons": [
+        "new in-scope asset"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_8f6ba1fb199a6534",
+      "change_id": "sandbox__acme-cloud__v3",
+      "kind": "added",
+      "asset_key": "web|https://cdn.acme.example",
+      "family": "web",
+      "target": "https://cdn.acme.example",
+      "display": "CDN origin",
+      "before": null,
+      "after": {
+        "target": "CDN origin",
+        "canonical": "https://cdn.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 2000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 55,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_b051b7db077de16d",
+      "change_id": "sandbox__acme-cloud__v3",
+      "kind": "added",
+      "asset_key": "web|https://support.acme.example",
+      "family": "web",
+      "target": "https://support.acme.example",
+      "display": "Support portal",
+      "before": null,
+      "after": {
+        "target": "Support portal",
+        "canonical": "https://support.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 3",
+        "max_bounty": 500,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 45,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_1629b280f6a37afa",
+      "change_id": "sandbox__acme-cloud__v4",
+      "kind": "modified",
+      "asset_key": "wildcard|*.acme.example",
+      "family": "wildcard",
+      "target": "*.acme.example",
+      "display": "Production wildcard",
+      "before": {
+        "target": "Production wildcard",
+        "canonical": "*.acme.example",
+        "family": "wildcard",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 1",
+        "max_bounty": 8000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "wildcard"
+        ]
+      },
+      "after": {
+        "target": "Production wildcard",
+        "canonical": "*.acme.example",
+        "family": "wildcard",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 1",
+        "max_bounty": 10000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "wildcard"
+        ]
+      },
+      "fields": [
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": 8000,
+          "after": 10000
+        }
+      ],
+      "impact": "opportunity",
+      "materiality_score": 15,
+      "reasons": [
+        "max bounty increased"
+      ],
+      "group_names": [
+        "API"
+      ]
+    },
+    {
+      "id": "ci_62be32353963c3ad",
+      "change_id": "sandbox__acme-cloud__v4",
+      "kind": "modified",
+      "asset_key": "api|https://api.acme.example",
+      "family": "api",
+      "target": "https://api.acme.example",
+      "display": "Public API",
+      "before": {
+        "target": "Public API",
+        "canonical": "https://api.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 6000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "after": {
+        "target": "Public API",
+        "canonical": "https://api.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 9000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "fields": [
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": 6000,
+          "after": 9000
+        }
+      ],
+      "impact": "opportunity",
+      "materiality_score": 15,
+      "reasons": [
+        "max bounty increased"
+      ],
+      "group_names": [
+        "API"
+      ]
+    },
+    {
+      "id": "ci_3bda5ac0ffc096e7",
+      "change_id": "sandbox__acme-cloud__v5",
+      "kind": "added",
+      "asset_key": "web|https://dashboard.acme.example",
+      "family": "web",
+      "target": "https://dashboard.acme.example",
+      "display": "Customer dashboard",
+      "before": null,
+      "after": {
+        "target": "Customer dashboard",
+        "canonical": "https://dashboard.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 3000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 55,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_b01794e37fa183b8",
+      "change_id": "sandbox__acme-cloud__v5",
+      "kind": "removed",
+      "asset_key": "ip|192.0.2.10",
+      "family": "ip",
+      "target": "192.0.2.10",
+      "display": "Edge host",
+      "before": {
+        "target": "Edge host",
+        "canonical": "192.0.2.10",
+        "family": "ip",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 4000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Platform"
+        ],
+        "tags": [
+          "ip"
+        ]
+      },
+      "after": null,
+      "fields": [],
+      "impact": "risk",
+      "materiality_score": 53,
+      "reasons": [
+        "in-scope asset removed",
+        "bounty-eligible target lost",
+        "Tier 2 reward"
+      ],
+      "group_names": [
+        "Platform"
+      ]
+    },
+    {
+      "id": "ci_6b8e6878efa9930e",
+      "change_id": "sandbox__acme-cloud__v6",
+      "kind": "modified",
+      "asset_key": "web|https://status.acme.example",
+      "family": "web",
+      "target": "https://status.acme.example",
+      "display": "Public status page",
+      "before": {
+        "target": "Public status page",
+        "canonical": "https://status.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": false,
+        "bounty_tier": null,
+        "max_bounty": null,
+        "currency": null,
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "after": {
+        "target": "Public status page",
+        "canonical": "https://status.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 1500,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [
+        {
+          "field": "bounty_eligible",
+          "label": "Bounty eligible",
+          "before": false,
+          "after": true
+        },
+        {
+          "field": "bounty_tier",
+          "label": "Reward tier",
+          "before": null,
+          "after": "Tier 2"
+        },
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": null,
+          "after": 1500
+        },
+        {
+          "field": "currency",
+          "label": "Currency",
+          "before": null,
+          "after": "USD"
+        }
+      ],
+      "impact": "mixed",
+      "materiality_score": 57,
+      "reasons": [
+        "bounty eligibility added",
+        "reward tier changed",
+        "max bounty increased",
+        "reward currency changed"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_cf514187476db8de",
+      "change_id": "sandbox__acme-cloud__v6",
+      "kind": "modified",
+      "asset_key": "web|https://www.acme.example",
+      "family": "web",
+      "target": "https://www.acme.example",
+      "display": "Marketing site",
+      "before": {
+        "target": "Marketing site",
+        "canonical": "https://www.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 4000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "after": {
+        "target": "Marketing site",
+        "canonical": "https://www.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 1",
+        "max_bounty": 5000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [
+        {
+          "field": "bounty_tier",
+          "label": "Reward tier",
+          "before": "Tier 2",
+          "after": "Tier 1"
+        },
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": 4000,
+          "after": 5000
+        }
+      ],
+      "impact": "opportunity",
+      "materiality_score": 23,
+      "reasons": [
+        "reward tier upgraded (Tier 2 → Tier 1)",
+        "max bounty increased"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_bfc18e86909f156e",
+      "change_id": "sandbox__acme-cloud__v7",
+      "kind": "added",
+      "asset_key": "web|https://partner.acme.example",
+      "family": "web",
+      "target": "https://partner.acme.example",
+      "display": "Partner portal",
+      "before": null,
+      "after": {
+        "target": "Partner portal",
+        "canonical": "https://partner.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 3000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Core web"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 55,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty"
+      ],
+      "group_names": [
+        "Core web"
+      ]
+    },
+    {
+      "id": "ci_1191e9501d180568",
+      "change_id": "sandbox__acme-cloud__v7",
+      "kind": "modified",
+      "asset_key": "api|https://api.acme.example",
+      "family": "api",
+      "target": "https://api.acme.example",
+      "display": "Public API",
+      "before": {
+        "target": "Public API",
+        "canonical": "https://api.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 9000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "after": {
+        "target": "Public API",
+        "canonical": "https://api.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 8000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "fields": [
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": 9000,
+          "after": 8000
+        }
+      ],
+      "impact": "risk",
+      "materiality_score": 30,
+      "reasons": [
+        "max bounty reduced"
+      ],
+      "group_names": [
+        "API"
+      ]
+    },
+    {
+      "id": "ci_ac53e2165e6a2e6a",
+      "change_id": "sandbox__acme-cloud__v8",
+      "kind": "added",
+      "asset_key": "wildcard|*.staging.acme.example",
+      "family": "wildcard",
+      "target": "*.staging.acme.example",
+      "display": "Staging wildcard",
+      "before": null,
+      "after": {
+        "target": "Staging wildcard",
+        "canonical": "*.staging.acme.example",
+        "family": "wildcard",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 1",
+        "max_bounty": 5000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": "Staging only. Rate limit: 5 req/s.",
+        "groups": [
+          "Staging"
+        ],
+        "tags": [
+          "wildcard"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 82,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "wildcard coverage",
+        "Tier 1 reward",
+        "high max bounty"
+      ],
+      "group_names": [
+        "Staging"
+      ]
+    },
+    {
+      "id": "ci_24d240165458912e",
+      "change_id": "sandbox__acme-cloud__v8",
+      "kind": "added",
+      "asset_key": "api|https://api.staging.acme.example",
+      "family": "api",
+      "target": "https://api.staging.acme.example",
+      "display": "Staging API",
+      "before": null,
+      "after": {
+        "target": "Staging API",
+        "canonical": "https://api.staging.acme.example",
+        "family": "api",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 2",
+        "max_bounty": 3000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": "Use the seeded staging tenant. Never test production checkout.",
+        "groups": [
+          "Staging"
+        ],
+        "tags": [
+          "api"
+        ]
+      },
+      "fields": [],
+      "impact": "opportunity",
+      "materiality_score": 57,
+      "reasons": [
+        "new in-scope asset",
+        "bounty eligible",
+        "Tier 2 reward",
+        "high max bounty"
+      ],
+      "group_names": [
+        "Staging"
+      ]
+    },
+    {
+      "id": "ci_9cfd0b7cf60ba661",
+      "change_id": "sandbox__acme-cloud__v8",
+      "kind": "modified",
+      "asset_key": "wildcard|*.acme.example",
+      "family": "wildcard",
+      "target": "*.acme.example",
+      "display": "Production wildcard",
+      "before": {
+        "target": "Production wildcard",
+        "canonical": "*.acme.example",
+        "family": "wildcard",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 1",
+        "max_bounty": 10000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "wildcard"
+        ]
+      },
+      "after": {
+        "target": "Production wildcard",
+        "canonical": "*.acme.example",
+        "family": "wildcard",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 3",
+        "max_bounty": 2000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "API"
+        ],
+        "tags": [
+          "wildcard"
+        ]
+      },
+      "fields": [
+        {
+          "field": "bounty_tier",
+          "label": "Reward tier",
+          "before": "Tier 1",
+          "after": "Tier 3"
+        },
+        {
+          "field": "max_bounty",
+          "label": "Max bounty",
+          "before": 10000,
+          "after": 2000
+        }
+      ],
+      "impact": "risk",
+      "materiality_score": 54,
+      "reasons": [
+        "reward tier downgraded (Tier 1 → Tier 3)",
+        "max bounty reduced"
+      ],
+      "group_names": [
+        "API"
+      ]
+    },
+    {
+      "id": "ci_c3135aa5280b7b75",
+      "change_id": "sandbox__acme-cloud__v8",
+      "kind": "removed",
+      "asset_key": "web|https://legacy.acme.example",
+      "family": "web",
+      "target": "https://legacy.acme.example",
+      "display": "Legacy portal",
+      "before": {
+        "target": "Legacy portal",
+        "canonical": "https://legacy.acme.example",
+        "family": "web",
+        "kind": "in",
+        "bounty_eligible": true,
+        "bounty_tier": "Tier 3",
+        "max_bounty": 1000,
+        "currency": "USD",
+        "max_severity": "critical",
+        "instruction": null,
+        "groups": [
+          "Legacy"
+        ],
+        "tags": [
+          "web"
+        ]
+      },
+      "after": null,
+      "fields": [],
+      "impact": "risk",
+      "materiality_score": 48,
+      "reasons": [
+        "in-scope asset removed",
+        "bounty-eligible target lost"
+      ],
+      "group_names": [
+        "Legacy"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "id": "run_seed_bugcrowd",
+      "platform": "bugcrowd",
+      "target": "directory",
+      "started_at": "2026-11-16T08:40:00Z",
+      "finished_at": "2026-11-16T08:40:01Z",
+      "status": "ok",
+      "programs_seen": 2,
+      "programs_changed": 0,
+      "assets_seen": 9,
+      "latency_ms": 430,
+      "error": null,
+      "notes": [
+        "Demo seed"
+      ]
+    },
+    {
+      "id": "run_seed_hackerone",
+      "platform": "hackerone",
+      "target": "directory",
+      "started_at": "2026-11-16T08:41:00Z",
+      "finished_at": "2026-11-16T08:41:01Z",
+      "status": "ok",
+      "programs_seen": 1,
+      "programs_changed": 0,
+      "assets_seen": 4,
+      "latency_ms": 610,
+      "error": null,
+      "notes": [
+        "Demo seed"
+      ]
+    },
+    {
+      "id": "run_seed_intigriti",
+      "platform": "intigriti",
+      "target": "directory",
+      "started_at": "2026-11-16T08:42:00Z",
+      "finished_at": "2026-11-16T08:42:01Z",
+      "status": "ok",
+      "programs_seen": 1,
+      "programs_changed": 0,
+      "assets_seen": 4,
+      "latency_ms": 520,
+      "error": null,
+      "notes": [
+        "Demo seed"
+      ]
+    },
+    {
+      "id": "run_seed_sandbox",
+      "platform": "sandbox",
+      "target": "acme-cloud",
+      "started_at": "2026-11-16T08:45:00Z",
+      "finished_at": "2026-11-16T08:45:01Z",
+      "status": "ok",
+      "programs_seen": 1,
+      "programs_changed": 0,
+      "assets_seen": 14,
+      "latency_ms": 8,
+      "error": null,
+      "notes": [
+        "Demo seed"
+      ]
+    }
+  ]
+}
