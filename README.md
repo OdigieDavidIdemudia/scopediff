@@ -41,7 +41,7 @@ All demo targets use RFC 2606 reserved domains (`example.com`) and RFC 5737 test
 
 ## Live accounts, onboarding and scheduled checks
 
-The live product path is now account-based:
+The live product path is now account-based and runs entirely on free tiers:
 
 - **Sign up / sign in** with Google SSO or email/password via Firebase Auth.
 - **Preference wizard** on first sign-in, with clickable answers and manual testing-target input.
@@ -49,10 +49,11 @@ The live product path is now account-based:
   - `bugcrowd.com/<handle>`
   - `hackerone.com/<handle>`
   - `app.intigriti.com/programs/<company>/<program>/detail`
-- The worker fetches the first published version, stores it as a baseline, and creates a watch.
-- Each watch has its own interval: **1, 5, 15 or 60 minutes**. The default is 15.
-- A single Cloud Scheduler job calls `/internal/cron` every minute. The worker checks only
-  watches whose `next_check_at` is due, then reschedules them.
+- Adding a program writes a **queued baseline** to Firestore. No paid worker is involved.
+- A free **GitHub Actions workflow runs every 30 minutes**. It processes queued baselines,
+  fetches the first published version, stores it, and activates the watch.
+- The same cron re-checks due watches, creates diffs, updates `next_check_at`, and sends Slack
+  alerts for matching user preferences.
 - The feed is personalized to the signed-in user's watched programs and testing targets.
 - A **Demo / Live** toggle in the header switches between the bundled showcase and the
   account-backed live feed.
@@ -60,6 +61,10 @@ The live product path is now account-based:
 The scheduler is deterministic, not an LLM agent: fetch published metadata → canonicalise →
 diff → score → persist → notify. That is deliberate. Cron handles timing; the diff engine
 handles truth.
+
+**Free-plan trade-offs:** the cron cadence is 30 minutes (GitHub Actions minimum practical
+schedule), the Slack “test alert” button is disabled, and the FastAPI worker is not hosted.
+The FastAPI code remains in the repo for an optional future Cloud Run deployment.
 
 ## Three-minute demo script
 
@@ -288,19 +293,19 @@ Invoke-RestMethod -Method Post `
 
 - **Firebase Hosting:** deployed to project `scopediff`.
 - **Public URL:** [https://scopediff.web.app](https://scopediff.web.app)
-- **Current public mode:** bundled demo dataset from the previous build.
-- **New account/live build:** implemented and locally verified, pending GCP API enablement.
-- **Still needed before the live URL is current:**
-  - enable Firestore, Identity Toolkit, Cloud Run, Cloud Build, Artifact Registry and
-    Cloud Scheduler
-  - create the Firestore database
-  - deploy the worker to Cloud Run
-  - create the every-minute Cloud Scheduler job
-  - rebuild Hosting with `VITE_API_URL` and the Firebase web config
+- **Auth:** email/password + Google enabled.
+- **Firestore:** database, rules and indexes deployed.
+- **Live data:** browser reads/writes Firestore directly; no paid worker API.
+- **Cron:** private GitHub repo with a 30-minute Actions workflow.
+- **Repo:** `OdigieDavidIdemudia/scopediff` (private).
+- **Not deployed:** Cloud Run / Cloud Scheduler. Those require Blaze billing and are
+  intentionally left out of the free-plan build.
 
-## Deploying the web app
+## Deploying the free-plan build
 
 The checked-in `.firebaserc` points at `scopediff`.
+
+### Web app
 
 ```powershell
 cd web
@@ -309,50 +314,45 @@ cd ..
 npx firebase-tools deploy --only hosting --project scopediff
 ```
 
-## Deploying to Firebase + Cloud Run
+Firebase Auth and Firestore config live in `web/.env.local`. The production build does
+**not** need `VITE_API_URL`; live mode talks to Firestore directly.
 
-1. Create a Firebase project and enable Auth (Google), Firestore, Storage and Hosting.
-2. Copy `.firebaserc.example` to `.firebaserc` and set the project ID.
-3. Build the web app:
+### Auth + Firestore
 
-   ```powershell
-   cd web
-   $env:VITE_API_URL="https://YOUR-CLOUD-RUN-URL"
-   npm run build
-   ```
+```powershell
+npx firebase-tools deploy --only firestore:rules,firestore:indexes --project scopediff
+npx firebase-tools deploy --only auth --project scopediff
+```
 
-4. Deploy rules and Hosting:
+`firebase.json` contains the email/password and Google provider configuration.
 
-   ```powershell
-   firebase deploy --only firestore:rules,firestore:indexes,storage,hosting
-   ```
+### Cron
 
-5. Build and deploy the worker:
+The cron is a private GitHub Actions workflow:
 
-   ```powershell
-   gcloud run deploy scopediff-worker `
-     --source worker `
-     --region us-central1 `
-     --allow-unauthenticated `
-     --set-env-vars SCOPEDIFF_DEMO=false,SCOPEDIFF_STORE=firestore,SCOPEDIFF_INTERNAL_TOKEN=...
-   ```
+```text
+.github/workflows/scopediff-cron.yml
+```
 
-   Grant the Cloud Run service account Firestore and Storage permissions. Remove
-   `--allow-unauthenticated` if you put the worker behind an authenticated gateway.
+It runs every 30 minutes and can be triggered manually from the Actions tab. Required
+repository secrets:
 
-6. Create Cloud Scheduler jobs for recurring directory syncs. Example every 30 minutes:
+- `FIREBASE_SERVICE_ACCOUNT` — JSON for a service account with `roles/datastore.user`
+- `H1_API_USER`
+- `H1_API_TOKEN`
 
-   ```powershell
-   gcloud scheduler jobs create http scopediff-sync `
-     --schedule "*/30 * * * *" `
-     --uri "https://YOUR-CLOUD-RUN-URL/internal/sync" `
-     --http-method POST `
-     --headers "X-ScopeDiff-Token=..." `
-     --message-body '{"platform":"bugcrowd","all":true,"limit":100}'
-   ```
+The cron script is `scripts/firestore_cron.py`. It:
 
-7. Set `SCOPEDIFF_CORS_ORIGINS` to the Hosting origin and `SCOPEDIFF_PUBLIC_URL` to the
-   public web URL.
+1. scans each user's watches for `status == "pending"`
+2. resolves the supported URL, captures the first baseline and creates an active watch
+3. checks due active watches, stores diffs and updates `next_check_at`
+4. sends Slack alerts when the user's alert mode and materiality floor match
+
+### Optional future Cloud Run deployment
+
+The FastAPI worker remains in `worker/` and can be deployed to Cloud Run if billing is
+enabled later. The web app does not depend on it in the free-plan build. If you do deploy it,
+set `VITE_API_URL` and rebuild, then point Cloud Scheduler at `/internal/cron`.
 
 ## Tests
 
@@ -386,6 +386,8 @@ ScopeDiff/
   firestore.indexes.json
   storage.rules
   scripts/build_demo_data.py  Demo fixture generator
+  scripts/firestore_cron.py   Free-plan Firestore cron runner
+  .github/workflows/          GitHub Actions 30-minute cron
   standards/                  Personal design standards (reference)
   worker/
     app/
@@ -401,7 +403,7 @@ ScopeDiff/
   web/
     src/
       components/             App shell, cards, filters, scope table, timeline
-      lib/                    API, auth, formatting, matching, selectors
+      lib/                    Firestore live loader, auth, formatting, matching, selectors
       pages/                  Feed, programs, program, diff, watchlist, admin, login
       state/AppStore.tsx      Demo/live state, simulation, settings, auth
       styles/                 Tokens and component CSS
@@ -420,15 +422,19 @@ deterministic.
 
 ## Limitations
 
-- The web feed is authenticated-only in v1; the demo auto-signs in, production uses Firebase
-  Auth.
-- Email digest is stored as a preference only; Slack is the implemented channel.
-- The Firestore/GCS store path needs credentials and is not covered by local tests.
-- HackerOne requires user-supplied credentials.
-- The UI's live mode uses `/api/bootstrap`; it does not read Firestore directly.
+- Free plan uses GitHub Actions every **30 minutes**; 1/5/15-minute cadences are not
+  available without a paid scheduler.
+- Queued baselines wait for the next cron run. There is no immediate fetch on the public
+  free build.
+- The Slack “test alert” button is disabled on the free build; real alerts are sent by the
+  cron after a detected change.
+- Email digest is stored as a preference only.
+- HackerOne requires user-supplied credentials; they live in GitHub Actions secrets.
+- The FastAPI worker is not hosted on the free plan. Cloud Run/Scheduler would require Blaze.
+- The free-plan cron scans user watch subcollections directly, which is fine for an MVP but
+  would need a collection-group index and pagination at scale.
 - The sandbox simulator is a demo tool, not a production admin surface.
-- There is no background queue: Cloud Scheduler calls the worker, and the worker does the
-  fetch synchronously within request limits.
+- Firestore client persistence can take several seconds on the first live paint.
 
 ## Safety and ethics
 
