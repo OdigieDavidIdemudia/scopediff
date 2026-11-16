@@ -99,7 +99,7 @@ export function LoginPage() {
           <ul className="login-hero__list">
             <li>Versioned snapshots, not screenshots</li>
             <li>Materiality scored against your targets</li>
-            <li>Scheduled checks from 1 minute upward</li>
+            <li>Free 30-minute scheduled checks</li>
           </ul>
         </div>
 

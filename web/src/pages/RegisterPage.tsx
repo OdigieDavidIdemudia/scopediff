@@ -100,7 +100,7 @@ export function RegisterPage() {
           <ul className="login-hero__list">
             <li>Google SSO or email/password</li>
             <li>Manual testing targets, not guesswork</li>
-            <li>Per-program check intervals from 1 to 60 minutes</li>
+            <li>30 or 60 minute check cadences on the free plan</li>
           </ul>
         </div>
         <div className="login-diff" aria-hidden="true">
