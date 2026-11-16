@@ -322,6 +322,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
   const [prefsReady, setPrefsReady] = useState(false);
   const [toast, setToast] = useState<ToastState | null>(null);
   const toastId = useRef(0);
+  const modeRef = useRef(mode);
 
   const notify = useCallback(
     (message: string, kind: ToastKind = "info", action?: ToastAction) => {
@@ -350,6 +351,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
     setLoadError(null);
     try {
       const next = await loadLiveState(user);
+      if (modeRef.current !== "live") return;
       setData(next.data);
       setProfile(next.profile);
       setWatches(next.watches);
@@ -400,6 +402,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
   }, [mode, refreshLive]);
 
   useEffect(() => {
+    modeRef.current = mode;
     try {
       localStorage.setItem(MODE_KEY, mode);
     } catch {
@@ -633,6 +636,17 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
         return null;
       }
       const prefs = profile?.preferences;
+      if (
+        watches.filter(
+          (watch) => watch.status === "active" || watch.status === "pending",
+        ).length >= 10
+      ) {
+        notify(
+          "The free plan allows 10 watched programs. Remove one before adding another.",
+          "error",
+        );
+        return null;
+      }
       try {
         const host = new URL(url).hostname.toLowerCase();
         const supported = [
@@ -677,7 +691,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
         setSyncBusy(false);
       }
     },
-    [mode, notify, profile?.preferences, refreshLive, user],
+    [mode, notify, profile?.preferences, refreshLive, user, watches],
   );
 
   const removeWatch = useCallback(

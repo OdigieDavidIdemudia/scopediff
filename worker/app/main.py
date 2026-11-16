@@ -82,8 +82,18 @@ def get_user_store_dep() -> UserRepository:
 
 
 def internal_guard(x_scopediff_token: str | None = Header(default=None)) -> None:
-    if settings.internal_token and x_scopediff_token != settings.internal_token:
-        raise HTTPException(status_code=403, detail="Invalid internal token")
+    if settings.internal_token:
+        if x_scopediff_token != settings.internal_token:
+            raise HTTPException(status_code=403, detail="Invalid internal token")
+        return
+    if not settings.demo:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Internal endpoints are disabled until SCOPEDIFF_INTERNAL_TOKEN "
+                "is configured."
+            ),
+        )
 
 
 def _notifier(webhook: str | None = None) -> SlackNotifier:

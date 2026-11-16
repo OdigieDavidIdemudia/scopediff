@@ -36,3 +36,6 @@ ui-debug.log
 Thumbs.db
 .idea/
 .vscode/
+# generated demo media
+video-shots/
+scopediff-demo.mp4

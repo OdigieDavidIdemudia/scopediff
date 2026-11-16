@@ -97,14 +97,29 @@ def main() -> int:
             all_watch_docs.append((user_doc.id, watch_doc))
 
     # 1. Turn queued URLs into real watches and capture the first baseline.
+    # The free plan caps each user at 10 active/pending programs.
+    per_user: dict[str, int] = {}
+    for uid, doc in all_watch_docs:
+        status = (doc.to_dict() or {}).get("status")
+        if status in {"active", "pending"}:
+            per_user[uid] = per_user.get(uid, 0) + 1
+
     pending = [
         (uid, doc)
         for uid, doc in all_watch_docs
         if (doc.to_dict() or {}).get("status") == "pending"
     ]
     summary["pending"] = len(pending)
-    for uid, doc in pending:
+    for uid, doc in pending[:30]:
         data = doc.to_dict() or {}
+        if per_user.get(uid, 0) > 10:
+            doc.reference.update(
+                {
+                    "status": "error",
+                    "error": "Free plan allows 10 watched programs per account.",
+                }
+            )
+            continue
         try:
             ref = parse_program_url(str(data.get("program_url") or ""))
             result = sync_program(store, _adapter(ref.platform), ref)
@@ -160,6 +175,7 @@ def main() -> int:
             continue
         if watch.next_check_at <= now:
             due.append(watch)
+    due = due[:30]  # keep one workflow run bounded
     grouped: dict[str, list[Watch]] = {}
     for watch in due:
         grouped.setdefault(watch.program_id, []).append(watch)

@@ -41,12 +41,40 @@ service cloud.firestore {
     // processes them with a GitHub Actions cron using the Admin SDK.
     match /users/{userId} {
       allow read: if signedIn() && request.auth.uid == userId;
-      allow create, update: if signedIn() && request.auth.uid == userId;
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.uid == userId;
+      allow update: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.uid == resource.data.uid;
       allow delete: if false;
 
       match /watches/{programId} {
         allow read: if signedIn() && request.auth.uid == userId;
-        allow create, update, delete: if signedIn() && request.auth.uid == userId;
+        allow create: if signedIn()
+          && request.auth.uid == userId
+          && request.resource.data.uid == userId
+          && request.resource.data.program_id == programId
+          && request.resource.data.status == "pending"
+          && request.resource.data.active == true
+          && request.resource.data.platform in ["bugcrowd", "hackerone", "intigriti"]
+          && request.resource.data.interval_minutes in [30, 60]
+          && request.resource.data.program_url is string
+          && (
+            request.resource.data.program_url.matches("^https://(www\\.)?bugcrowd\\.com/.+")
+            || request.resource.data.program_url.matches("^https://(www\\.)?hackerone\\.com/.+")
+            || request.resource.data.program_url.matches("^https://(www\\.)?intigriti\\.com/.+")
+            || request.resource.data.program_url.matches("^https://app\\.intigriti\\.com/programs/.+")
+          );
+        allow update: if signedIn()
+          && request.auth.uid == userId
+          && request.resource.data.uid == resource.data.uid
+          && request.resource.data.program_id == resource.data.program_id
+          && request.resource.data.program_url == resource.data.program_url
+          && request.resource.data.platform == resource.data.platform
+          && request.resource.data.status == resource.data.status
+          && request.resource.data.interval_minutes in [30, 60];
+        allow delete: if signedIn() && request.auth.uid == userId;
       }
 
       match /{document=**} {
