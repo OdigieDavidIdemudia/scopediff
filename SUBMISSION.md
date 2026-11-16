@@ -5,7 +5,7 @@
 **Demo:** https://scopediff.web.app  
 **Code:** https://github.com/OdigieDavidIdemudia/scopediff  
 **Security assessment:** [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md)  
-**Demo video:** _[paste YouTube/Vimeo URL after upload]_
+**Demo video:** `scopediff-demo.mp4` generated locally (2:15). _Upload to YouTube/Vimeo and paste the URL here._
 
 ---
 

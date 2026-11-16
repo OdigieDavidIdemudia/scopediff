@@ -296,8 +296,10 @@ Invoke-RestMethod -Method Post `
 - **Auth:** email/password + Google enabled.
 - **Firestore:** database, rules and indexes deployed.
 - **Live data:** browser reads/writes Firestore directly; no paid worker API.
-- **Cron:** private GitHub repo with a 30-minute Actions workflow.
-- **Repo:** `OdigieDavidIdemudia/scopediff` (private).
+- **Cron:** public GitHub repo with a 30-minute Actions workflow.
+- **Repo:** [OdigieDavidIdemudia/scopediff](https://github.com/OdigieDavidIdemudia/scopediff) (public).
+- **Security assessment:** [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md) — 6 pass, 3 partial, 1 fail.
+- **Submission story:** [SUBMISSION.md](SUBMISSION.md).
 - **Not deployed:** Cloud Run / Cloud Scheduler. Those require Blaze billing and are
   intentionally left out of the free-plan build.
 
@@ -328,7 +330,7 @@ npx firebase-tools deploy --only auth --project scopediff
 
 ### Cron
 
-The cron is a private GitHub Actions workflow:
+The cron is a public GitHub Actions workflow (secrets stay private):
 
 ```text
 .github/workflows/scopediff-cron.yml
@@ -442,6 +444,20 @@ ScopeDiff only reads published program metadata. It does not scan, resolve, fuzz
 otherwise touch a target. Slack webhooks are host-restricted. Demo data is fictional and
 uses reserved domains and test ranges. The project is a scope-change communication tool, not
 an attack tool.
+
+## Security
+
+The OWASP Top 10 (2021) assessment is in [`OWASP_ASSESSMENT.md`](OWASP_ASSESSMENT.md).
+Result: **6 pass, 3 partial, 1 fail**. The failed category is operational
+logging/monitoring. Dependency audit is clean after the React Router and gRPC upgrades.
+Production security headers, Firestore access-control tests and secret-scan evidence are
+recorded in that document.
+
+## Demo video
+
+A 2:15 narrated demo video is generated at `scopediff-demo.mp4` (not committed). The
+three-minute script and shot list live in [`SUBMISSION.md`](SUBMISSION.md). Upload the MP4
+to YouTube or Vimeo and paste the URL into the submission form and `SUBMISSION.md`.
 
 ## Design
 
