@@ -473,4 +473,4 @@ themes. Implementation tokens live in `web/src/styles/tokens.css`.
 
 ## License
 
-Hackathon project. Add a license before distributing.
+MIT. See [LICENSE](LICENSE).
