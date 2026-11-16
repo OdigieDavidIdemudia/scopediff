@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 from datetime import timedelta
 from pathlib import Path
 
@@ -32,9 +33,15 @@ def _init_firebase():
     import firebase_admin
     from firebase_admin import credentials
 
+    raw = os.getenv("FIREBASE_SERVICE_ACCOUNT")
+    if raw and not os.getenv("GOOGLE_APPLICATION_CREDENTIALS"):
+        # google-cloud-firestore reads ADC independently of firebase-admin.
+        path = Path(tempfile.gettempdir()) / "scopediff-cron-service-account.json"
+        path.write_text(raw, encoding="utf-8")
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(path)
+
     if firebase_admin._apps:
         return
-    raw = os.getenv("FIREBASE_SERVICE_ACCOUNT")
     if raw:
         cred = credentials.Certificate(json.loads(raw))
     else:
