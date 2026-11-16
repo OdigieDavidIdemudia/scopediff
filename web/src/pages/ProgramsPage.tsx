@@ -269,8 +269,9 @@ export function ProgramsPage() {
             <div>
               <h2 className="card__title">Watch a program by URL</h2>
               <p className="card__sub">
-                Paste a public Bugcrowd, HackerOne or Intigriti program page. The worker
-                captures the first scope version immediately, then the cron re-checks it.
+                Paste a public Bugcrowd, HackerOne or Intigriti program page. The free
+                GitHub Actions cron captures the first scope version within 30 minutes,
+                then re-checks it on the same cadence.
               </p>
             </div>
           </div>

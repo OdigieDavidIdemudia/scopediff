@@ -179,8 +179,9 @@ export function AdminPage() {
                 </div>
                 <h2 className="card__title">Your watchlist is on a schedule.</h2>
                 <p className="card__sub">
-                  One Cloud Scheduler job calls the worker every minute. Each watch carries its
-                  own next-check timestamp, so 1/5/15/60 minute intervals coexist.
+                  A free GitHub Actions workflow runs every 30 minutes. Each watch carries its
+                  own next-check timestamp, so queued baselines and due checks are processed in
+                  one pass without a paid scheduler.
                 </p>
               </div>
               <span className="chip chip--green">Live</span>
@@ -256,12 +257,16 @@ export function AdminPage() {
             <div className="config-row">
               <span className="config-row__key">API base</span>
               <span className="config-row__value">
-                {import.meta.env.VITE_API_URL || "bundled demo"}
+                {mode === "live"
+                  ? "Firestore direct"
+                  : import.meta.env.VITE_API_URL || "bundled demo"}
               </span>
             </div>
             <div className="config-row">
               <span className="config-row__key">Store</span>
-              <span className="config-row__value">{health?.store || (mode === "demo" ? "json (bundled)" : "unknown")}</span>
+              <span className="config-row__value">
+                {health?.store || (mode === "demo" ? "json (bundled)" : "firestore")}
+              </span>
             </div>
             <div className="config-row">
               <span className="config-row__key">Auth</span>
@@ -272,13 +277,25 @@ export function AdminPage() {
             <div className="config-row">
               <span className="config-row__key">Slack</span>
               <span className="config-row__value">
-                {health ? (health.slack_configured ? "configured" : "not configured") : "demo disabled"}
+                {health
+                  ? health.slack_configured
+                    ? "configured"
+                    : "not configured"
+                  : mode === "live"
+                    ? "GitHub cron"
+                    : "demo disabled"}
               </span>
             </div>
             <div className="config-row">
               <span className="config-row__key">HackerOne</span>
               <span className="config-row__value">
-                {health ? (health.hackerone_configured ? "token present" : "token-gated") : "token-gated"}
+                {health
+                  ? health.hackerone_configured
+                    ? "token present"
+                    : "token-gated"
+                  : mode === "live"
+                    ? "configured in cron"
+                    : "token-gated"}
               </span>
             </div>
             <div className="config-row">
@@ -288,9 +305,10 @@ export function AdminPage() {
           </div>
           <div className="card__section">
             <Callout tone="neutral" icon={<DatabaseIcon size={13} />}>
-              Production uses Firestore with large snapshots in Cloud Storage, a FastAPI
-              worker on Cloud Run and Cloud Scheduler for recurring syncs. This build ships
-              the same store contract with a local JSON fallback.
+              Free-plan architecture: Firebase Auth + Firestore for accounts, Firebase
+              Hosting for the app, and a GitHub Actions workflow for the 30-minute cron.
+              The FastAPI worker is still in the repo for a future Cloud Run deployment,
+              but the public app does not depend on it.
             </Callout>
           </div>
         </section>

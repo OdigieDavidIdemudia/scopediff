@@ -751,7 +751,10 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
         toggleWatchDemo(programId);
         return;
       }
-      if (watchlist.includes(programId)) {
+      if (
+        watchlist.includes(programId) ||
+        watches.some((watch) => watch.program_id === programId)
+      ) {
         void removeWatch(programId);
       } else {
         const program = data.programs.find((row) => row.id === programId);
@@ -762,7 +765,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
         }
       }
     },
-    [addWatch, data.programs, mode, notify, removeWatch, watchlist],
+    [addWatch, data.programs, mode, notify, removeWatch, watchlist, watches],
   );
 
   const addTestingTarget = useCallback(
