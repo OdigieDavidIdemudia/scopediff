@@ -42,6 +42,7 @@ export function WatchlistPage() {
     watchlist,
     watches,
     updateWatch,
+    removeWatch,
     addTestingTarget,
     removeTestingTarget,
     toggleWatch,
@@ -210,7 +211,7 @@ export function WatchlistPage() {
                   <button
                     type="button"
                     className="icon-button icon-button--small"
-                    onClick={() => void toggleWatch(watch.program_id)}
+                    onClick={() => void removeWatch(watch.program_id)}
                     title="Cancel queued baseline"
                     aria-label="Cancel queued baseline"
                   >

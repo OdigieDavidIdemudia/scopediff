@@ -34,6 +34,7 @@ export function ProgramsPage() {
     watches,
     toggleWatch,
     addWatch,
+    removeWatch,
     updateWatch,
     notify,
     syncBusy,
@@ -253,7 +254,7 @@ export function ProgramsPage() {
                 <button
                   type="button"
                   className="button button--ghost button--sm"
-                  onClick={() => void toggleWatch(watch.program_id)}
+                  onClick={() => void removeWatch(watch.program_id)}
                 >
                   Cancel
                 </button>
