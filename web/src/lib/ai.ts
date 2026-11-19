@@ -162,7 +162,15 @@ function parseInsight(text: string): Omit<DiffInsight, "inferenceSource" | "late
 export async function analyzeDiff(change: Change, items: ChangeItem[]): Promise<DiffInsight> {
   const started = performance.now();
   const model = await getModel();
-  void startOnDeviceInit(model);
+  // If Nano is already available, wait for initialization so this click uses
+  // the local model. If it is missing or still downloading, do not block the
+  // request: PREFER_ON_DEVICE falls back to cloud and the next click can use
+  // the downloaded model.
+  if ((await onDeviceAvailability()) === "available") {
+    await startOnDeviceInit(model);
+  } else {
+    void startOnDeviceInit(model);
+  }
   const result = await model.generateContent(buildPrompt(change, items));
   const inference = String(result.response.inferenceSource || "unknown").toLowerCase();
   const inferenceSource =
