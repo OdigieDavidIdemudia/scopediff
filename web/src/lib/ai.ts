@@ -37,6 +37,7 @@ const systemInstruction = [
 ].join(" ");
 
 let modelPromise: ReturnType<typeof getGenerativeModel> | null = null;
+let deviceInitPromise: Promise<void> | null = null;
 
 async function getModel() {
   if (!modelPromise) {
@@ -71,6 +72,20 @@ async function getModel() {
     });
   }
   return modelPromise;
+}
+
+/**
+ * Chrome requires on-device model initialization to happen on or after a user
+ * interaction. This is called from the AI button handler through analyzeDiff.
+ * We deliberately do not await the model download: PREFER_ON_DEVICE falls back
+ * to cloud while the download is still in progress, and later clicks use the
+ * local model once it is ready.
+ */
+function startOnDeviceInit(model: ReturnType<typeof getGenerativeModel>): Promise<void> {
+  if (!deviceInitPromise) {
+    deviceInitPromise = model.initializeDeviceModel().catch(() => undefined);
+  }
+  return deviceInitPromise;
 }
 
 function short(value: unknown, max = 180): string {
@@ -147,6 +162,7 @@ function parseInsight(text: string): Omit<DiffInsight, "inferenceSource" | "late
 export async function analyzeDiff(change: Change, items: ChangeItem[]): Promise<DiffInsight> {
   const started = performance.now();
   const model = await getModel();
+  void startOnDeviceInit(model);
   const result = await model.generateContent(buildPrompt(change, items));
   const inference = String(result.response.inferenceSource || "unknown").toLowerCase();
   const inferenceSource =

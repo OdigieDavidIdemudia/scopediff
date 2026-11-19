@@ -62,6 +62,20 @@ The free-plan architecture uses:
 
 I originally planned Cloud Run + Cloud Scheduler, but the project is intentionally staying on the free plan. The FastAPI worker remains in the repository for a future paid deployment; the public build does not depend on it. The free cron reads queued watches from Firestore, fetches each supported program, stores the baseline or diff, updates `next_check_at`, and sends Slack alerts.
 
+### How I used Firebase AI Logic
+
+The AI Diff Analyst is a real hybrid-inference feature, not a wrapper around a chat box:
+
+- It imports `firebase/ai` and creates the service with `getAI(app, { backend: new GoogleAIBackend() })`.
+- The model is created with `mode: InferenceMode.PREFER_ON_DEVICE`, so Chrome Desktop with Gemini Nano does the work locally when the model is available.
+- The click handler that runs the analysis calls `model.initializeDeviceModel()` before sending the prompt, which is the user-activation step Chrome requires for on-device inference.
+- If the local model is absent, still downloading, or unavailable on the device, the same call automatically falls back to the cloud-hosted `gemini-3.5-flash-lite` model. No separate code path or second prompt is used.
+- Both paths return structured JSON validated by a schema: `summary`, `why_it_matters`, `review_first[]` and `caveats[]`.
+- The response's `inferenceSource` is shown in the UI as `on_device` or `in_cloud`, so the user can see where the answer came from.
+- The prompt contains only public program metadata and the deterministic diff. It excludes email, UID, Slack webhook and private testing targets, and the model is instructed to use review language only. The deterministic Python diff remains the source of truth; the AI explains it.
+
+Cloud fallback is verified in the deployed app. The on-device path requires Chrome Desktop 139+ with Gemini Nano; it is configured in code but cannot be exercised in a headless test runner.
+
 ### Challenges
 
 - **Different source models.** Bugcrowd, HackerOne and Intigriti describe scope in different shapes. A target can be a URL, wildcard, IP, CIDR, mobile package or repository. Normalising those without erasing real changes took more care than the UI.

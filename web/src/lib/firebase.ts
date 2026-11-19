@@ -22,16 +22,41 @@ export const firebaseEnabled = Boolean(
 
 let appPromise: Promise<FirebaseApp> | null = null;
 
+/**
+ * Firebase AI Logic requires App Check. We initialize it before any Firebase
+ * service is used. A production reCAPTCHA v3 site key is preferred; the debug
+ * provider is supported for local development and hackathon review builds.
+ */
+async function configureAppCheck(app: FirebaseApp): Promise<void> {
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string | undefined;
+  const debugToken = import.meta.env.VITE_APPCHECK_DEBUG_TOKEN as string | undefined;
+  if (!siteKey && !debugToken) return;
+
+  if (debugToken) {
+    (
+      globalThis as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: string | boolean }
+    ).FIREBASE_APPCHECK_DEBUG_TOKEN = debugToken === "true" ? true : debugToken;
+  }
+
+  const { initializeAppCheck, ReCaptchaV3Provider } = await import("firebase/app-check");
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider(siteKey || "debug-provider"),
+    isTokenAutoRefreshEnabled: true,
+  });
+}
+
 export async function getFirebaseApp(): Promise<FirebaseApp> {
   if (!appPromise) {
-    appPromise = import("firebase/app").then(({ initializeApp, getApps, getApp }) => {
+    appPromise = import("firebase/app").then(async ({ initializeApp, getApps, getApp }) => {
       if (getApps().length) return getApp();
-      return initializeApp({
+      const app = initializeApp({
         apiKey: config.apiKey,
         authDomain: config.authDomain,
         projectId: config.projectId,
         appId: config.appId,
       });
+      await configureAppCheck(app);
+      return app;
     });
   }
   return appPromise;

@@ -299,7 +299,7 @@ Invoke-RestMethod -Method Post `
 - **Publication:** [https://odigiedavididemudia.github.io/scopediff-publication/](https://odigiedavididemudia.github.io/scopediff-publication/) - static GitHub Pages technical record.
 - **Auth:** email/password + Google enabled.
 - **Firestore:** database, rules and indexes deployed.
-- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device preference configured.
+- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device preference configured; on-device model initialization runs from the AI action. App Check initialization is wired but production key/enforcement is pending.
 - **Live data:** browser reads/writes Firestore directly; no paid worker API.
 - **Cron:** public GitHub repo with a 30-minute Actions workflow.
 - **Repo:** [OdigieDavidIdemudia/scopediff](https://github.com/OdigieDavidIdemudia/scopediff) (public).
@@ -443,7 +443,8 @@ deterministic.
 - The sandbox simulator is a demo tool, not a production admin surface.
 - Firestore client persistence can take several seconds on the first live paint.
 - On-device web inference is Chrome-on-Desktop only; other browsers use cloud fallback.
-- Firebase App Check and API-key restrictions are not yet enforced for the AI endpoint.
+- App Check initialization is wired in the client, but the deployed build still needs a
+  reCAPTCHA v3 site key and App Check enforcement for AI Logic (see below).
 
 ## Safety and ethics
 
@@ -459,6 +460,30 @@ Result: **5 pass, 4 partial, 1 fail**. The failed category is operational
 logging/monitoring. Dependency audit is clean after the React Router and gRPC upgrades.
 Production security headers, Firestore access-control tests and secret-scan evidence are
 recorded in that document.
+
+### App Check setup
+
+Firebase AI Logic requires App Check. The client initializes App Check before any Firebase
+service when `VITE_RECAPTCHA_SITE_KEY` or `VITE_APPCHECK_DEBUG_TOKEN` is present, and the
+production CSP allows the reCAPTCHA script and frame origins.
+
+To finish enforcement:
+
+1. Create a reCAPTCHA v3 site key for `scopediff.web.app` (and `localhost` for development).
+2. In Firebase Console, open **Security > App Check > Apps**, register the web app with the
+   reCAPTCHA secret, then open the **APIs** tab and enforce App Check for **Firebase AI Logic**.
+3. Add the public site key to `web/.env.local`:
+
+   ```dotenv
+   VITE_RECAPTCHA_SITE_KEY=your-public-recaptcha-site-key
+   ```
+
+4. Rebuild and redeploy Hosting.
+5. Sign in and run the AI Diff Analyst; confirm the cloud fallback still returns a result and
+   the browser console has no App Check or CSP errors.
+
+For local review builds, register a debug token in **App Check > Apps > Manage debug
+tokens**, set `VITE_APPCHECK_DEBUG_TOKEN` in `web/.env.local`, and never commit that file.
 
 ## Demo video
 
