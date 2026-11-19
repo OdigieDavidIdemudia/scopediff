@@ -212,6 +212,7 @@ Recommended order:
 - Live accounts use real public program metadata only when the user adds a supported URL.
 - The HackerOne token is configured in GitHub Actions secrets, not in the client.
 - AI Logic uses the Gemini Developer API on the Spark plan. On-device inference is Chrome-on-Desktop only; the demo video's AI scene shows a verified `ON_DEVICE` result from the Gemini Nano CPU backend. Other browsers automatically use the cloud fallback.
+- App Check is enforced for AI Logic with a registered debug token, which the hackathon rules accept. Firebase has deprecated new reCAPTCHA v3 onboardings; a production deployment would use reCAPTCHA Enterprise.
 - The repository is public for judging. HackerOne credentials and the Firebase service account live only in GitHub Actions secrets.
 - The security assessment is in [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md).
 

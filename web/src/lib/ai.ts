@@ -58,9 +58,9 @@ async function getModel() {
     const ai = getAI(app, { backend: new GoogleAIBackend() });
     modelPromise = getGenerativeModel(ai, {
       mode: InferenceMode.PREFER_ON_DEVICE,
-      systemInstruction,
       inCloudParams: {
         model: "gemini-3.5-flash-lite",
+        systemInstruction,
         generationConfig: {
           responseMimeType: "application/json",
           responseSchema: schema,
@@ -189,10 +189,12 @@ export async function analyzeDiff(change: Change, items: ChangeItem[]): Promise<
   // the local model. If it is missing or still downloading, do not block the
   // request: PREFER_ON_DEVICE falls back to cloud and the next click can use
   // the downloaded model.
+  const init = startOnDeviceInit(model);
   if ((await onDeviceAvailability()) === "available") {
-    await startOnDeviceInit(model);
+    // Do not let a broken/flagged Prompt API service block the cloud fallback.
+    await Promise.race([init, new Promise((resolve) => setTimeout(resolve, 2500))]);
   } else {
-    void startOnDeviceInit(model);
+    void init;
   }
   const result = await model.generateContent(buildPrompt(change, items));
   const inference = String(result.response.inferenceSource || "unknown").toLowerCase();

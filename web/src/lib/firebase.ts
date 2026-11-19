@@ -23,9 +23,9 @@ export const firebaseEnabled = Boolean(
 let appPromise: Promise<FirebaseApp> | null = null;
 
 /**
- * Firebase AI Logic requires App Check. We initialize it before any Firebase
- * service is used. A production reCAPTCHA v3 site key is preferred; the debug
- * provider is supported for local development and hackathon review builds.
+ * Firebase AI Logic requires App Check. The hackathon build uses a registered
+ * debug token, which the rules explicitly accept. For production, register a
+ * reCAPTCHA Enterprise provider and pass its site key as VITE_RECAPTCHA_SITE_KEY.
  */
 async function configureAppCheck(app: FirebaseApp): Promise<void> {
   const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string | undefined;

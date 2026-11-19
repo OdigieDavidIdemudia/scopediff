@@ -299,7 +299,7 @@ Invoke-RestMethod -Method Post `
 - **Publication:** [https://odigiedavididemudia.github.io/scopediff-publication/](https://odigiedavididemudia.github.io/scopediff-publication/) - static GitHub Pages technical record.
 - **Auth:** email/password + Google enabled.
 - **Firestore:** database, rules and indexes deployed.
-- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device path verified with the Gemini Nano CPU backend (`ON_DEVICE`, 67.8s); App Check initialization wired with a reCAPTCHA v3 site key, enforcement pending.
+- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device path verified with the Gemini Nano CPU backend (`ON_DEVICE`, 67.8s local / 40.3s live); App Check enforced for AI Logic using a registered debug token.
 - **Live data:** browser reads/writes Firestore directly; no paid worker API.
 - **Cron:** public GitHub repo with a 30-minute Actions workflow.
 - **Repo:** [OdigieDavidIdemudia/scopediff](https://github.com/OdigieDavidIdemudia/scopediff) (public).
@@ -443,8 +443,9 @@ deterministic.
 - The sandbox simulator is a demo tool, not a production admin surface.
 - Firestore client persistence can take several seconds on the first live paint.
 - On-device web inference is Chrome-on-Desktop only; it was verified on Chrome 157 with the Gemini Nano CPU backend (`ON_DEVICE`, 67.8s). Other browsers use cloud fallback.
-- App Check initialization is wired in the client, but the deployed build still needs a
-  reCAPTCHA v3 site key and App Check enforcement for AI Logic (see below).
+- App Check is initialized with a registered debug token and **enforced for Firebase AI Logic**;
+  Auth and Firestore remain unenforced. reCAPTCHA v3 onboarding is deprecated by Firebase, so
+  production should move to reCAPTCHA Enterprise (see below).
 
 ## Safety and ethics
 
@@ -463,27 +464,24 @@ recorded in that document.
 
 ### App Check setup
 
-Firebase AI Logic requires App Check. The client initializes App Check before any Firebase
-service when `VITE_RECAPTCHA_SITE_KEY` or `VITE_APPCHECK_DEBUG_TOKEN` is present, and the
-production CSP allows the reCAPTCHA script and frame origins.
+Firebase AI Logic requires App Check. This build uses a **registered App Check debug token**,
+which the hackathon rules explicitly accept. The token is registered in the Firebase project,
+written only to the untracked `web/.env.local`, and baked into the client bundle at build time.
+The token exchange was verified in production (`exchangeDebugToken` → 200), and App Check is
+**enforced for Firebase AI Logic**.
 
-To finish enforcement:
+Firebase has deprecated new reCAPTCHA v3 App Check onboardings. For production, switch to
+**reCAPTCHA Enterprise** (Google Cloud Fraud Defense):
 
-1. Create a reCAPTCHA v3 site key for `scopediff.web.app` (and `localhost` for development).
-2. In Firebase Console, open **Security > App Check > Apps**, register the web app with the
-   reCAPTCHA secret, then open the **APIs** tab and enforce App Check for **Firebase AI Logic**.
-3. Add the public site key to `web/.env.local`:
+1. Create a reCAPTCHA Enterprise key for `scopediff.web.app`.
+2. Register it under **Security > App Check > Apps**.
+3. Add its public site key as `VITE_RECAPTCHA_SITE_KEY` in `web/.env.local`.
+4. Rebuild and redeploy, then verify the AI panel before changing enforcement.
 
-   ```dotenv
-   VITE_RECAPTCHA_SITE_KEY=your-public-recaptcha-site-key
-   ```
-
-4. Rebuild and redeploy Hosting.
-5. Sign in and run the AI Diff Analyst; confirm the cloud fallback still returns a result and
-   the browser console has no App Check or CSP errors.
-
-For local review builds, register a debug token in **App Check > Apps > Manage debug
-tokens**, set `VITE_APPCHECK_DEBUG_TOKEN` in `web/.env.local`, and never commit that file.
+To rotate the debug token, create a new token in **App Check > Apps > Manage debug tokens**,
+replace `VITE_APPCHECK_DEBUG_TOKEN`, rebuild, redeploy, and delete the old token. The token is
+inside the public bundle, so treat it as a hackathon credential, not a long-term production
+secret.
 
 ## Demo video
 

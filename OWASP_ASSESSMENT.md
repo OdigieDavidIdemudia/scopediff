@@ -109,11 +109,11 @@
 
 **Gaps**
 
-- Firebase App Check initialization is wired in the client (`web/src/lib/firebase.ts`) and a reCAPTCHA v3 site key is provisioned, but the secret still has to be registered in App Check and enforcement enabled. Until then, the Firebase web API key can be used to call the AI Logic endpoint from outside the app.
+- App Check is enforced for **Firebase AI Logic** and the app uses a registered debug token (accepted by the hackathon). The token is embedded in the client bundle, so it is not a long-term production secret. Firebase has deprecated new reCAPTCHA v3 App Check onboardings; production should use reCAPTCHA Enterprise. Auth and Firestore App Check remain unenforced, and the Firebase web API key can still call other enabled APIs from outside the app.
 - The web API key's API restrictions have not been narrowed to only the APIs ScopeDiff uses.
 - Firebase Auth currently includes localhost in its authorized domains for local development. This is normal for a Firebase project, but should be reviewed if the project is shared with untrusted collaborators.
 
-**Recommendation:** register a reCAPTCHA v3 key, enforce App Check for AI Logic, restrict the API key to the required APIs and HTTP referrers, and add budget/rate alerts for the Gemini Developer API.
+**Recommendation:** move to reCAPTCHA Enterprise for App Check, enforce App Check for Auth and Firestore, restrict the API key to the required APIs and HTTP referrers, and add budget/rate alerts for the Gemini Developer API.
 
 ## A06 — Vulnerable and Outdated Components — PASS
 
@@ -207,7 +207,7 @@ The hybrid AI feature adds a model-backed analyst. It does not execute model out
 |---|---|---|
 | LLM01 Prompt injection | **PARTIAL** | Scope metadata is untrusted public content. A malicious program could embed instruction-like text. The prompt is constrained, the output is structured JSON, and the model has no tools or write access. |
 | LLM02 Insecure output handling | **PASS** | Output is parsed as JSON, validated into fixed fields, and rendered as React text. No HTML or tool execution. |
-| LLM04 Model DoS / abuse | **PARTIAL** | No App Check or per-user AI quota yet. Gemini free-tier quotas and browser execution limits reduce but do not remove abuse risk. |
+| LLM04 Model DoS / abuse | **PARTIAL** | App Check is enforced with a debug token, but there is no per-user AI quota. Gemini free-tier quotas and browser execution limits reduce but do not remove abuse risk. |
 | LLM05 Supply-chain | **PASS** | Official Firebase AI Logic SDK, no third-party model gateway, no custom model weights. |
 | LLM06 Sensitive information disclosure | **PASS** | Prompt excludes email, Slack webhook, UID and private testing targets. Only public scope-diff metadata is sent. |
 | LLM07 Insecure plugin design | **PASS** | No plugins, tools or function-calling are exposed to the model. |
@@ -238,5 +238,5 @@ The hybrid AI feature adds a model-backed analyst. It does not execute model out
 
 ## Bottom line
 
-**Submission-ready free-plan build:** yes, with the caveats above. The public surface has no identified critical/high exploitable access-control, injection, SSRF or dependency issue. The main missing operational control is monitoring/alerting (A09). The main hardening gaps are App Check/API-key restrictions for AI usage (A05), account verification/password policy (A07), and supply-chain pinning (A08). The hybrid AI path is functional and reports whether the response came from on-device or cloud inference; prompt injection remains a bounded partial risk because scope metadata is untrusted public content.
+**Submission-ready free-plan build:** yes, with the caveats above. The public surface has no identified critical/high exploitable access-control, injection, SSRF or dependency issue. The main missing operational control is monitoring/alerting (A09). The main hardening gaps are App Check/API-key restrictions for AI usage (A05), account verification/password policy (A07), and supply-chain pinning (A08). App Check is enforced for AI Logic with a registered debug token; production hardening should move to reCAPTCHA Enterprise and enforce Auth/Firestore. The hybrid AI path is functional and reports whether the response came from on-device or cloud inference; prompt injection remains a bounded partial risk because scope metadata is untrusted public content.
 
