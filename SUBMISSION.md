@@ -6,7 +6,7 @@
 **Code:** https://github.com/OdigieDavidIdemudia/scopediff  
 **Publication:** https://odigiedavididemudia.github.io/scopediff-publication/  
 **Security assessment:** [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md)  
-**Demo video:** `scopediff-demo.mp4` generated locally (2:39). _Upload to YouTube/Vimeo and paste the URL here._
+**Demo video:** `scopediff-demo.mp4` generated locally (2:39, includes a verified on-device inference scene). _Upload to YouTube and paste the public URL here._
 
 ---
 
