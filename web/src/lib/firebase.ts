@@ -38,11 +38,18 @@ async function configureAppCheck(app: FirebaseApp): Promise<void> {
     ).FIREBASE_APPCHECK_DEBUG_TOKEN = debugToken === "true" ? true : debugToken;
   }
 
-  const { initializeAppCheck, ReCaptchaV3Provider } = await import("firebase/app-check");
-  initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(siteKey || "debug-provider"),
-    isTokenAutoRefreshEnabled: true,
-  });
+  try {
+    const { initializeAppCheck, ReCaptchaV3Provider } = await import("firebase/app-check");
+    initializeAppCheck(app, {
+      provider: new ReCaptchaV3Provider(siteKey || "debug-provider"),
+      isTokenAutoRefreshEnabled: true,
+    });
+  } catch (error) {
+    // Do not let a misconfigured attestation provider take down Auth,
+    // Firestore or AI Logic. App Check enforcement will still reject requests
+    // if it is enabled in the Firebase project.
+    console.warn("App Check initialization failed; continuing without it.", error);
+  }
 }
 
 export async function getFirebaseApp(): Promise<FirebaseApp> {

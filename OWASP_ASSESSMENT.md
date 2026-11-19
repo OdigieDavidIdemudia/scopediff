@@ -109,7 +109,7 @@
 
 **Gaps**
 
-- Firebase App Check initialization is wired in the client (`web/src/lib/firebase.ts`) but enforcement is not enabled and no production reCAPTCHA key is registered. The Firebase web API key can be used to call the AI Logic endpoint from outside the app until App Check and API-key restrictions are added.
+- Firebase App Check initialization is wired in the client (`web/src/lib/firebase.ts`) and a reCAPTCHA v3 site key is provisioned, but the secret still has to be registered in App Check and enforcement enabled. Until then, the Firebase web API key can be used to call the AI Logic endpoint from outside the app.
 - The web API key's API restrictions have not been narrowed to only the APIs ScopeDiff uses.
 - Firebase Auth currently includes localhost in its authorized domains for local development. This is normal for a Firebase project, but should be reviewed if the project is shared with untrusted collaborators.
 

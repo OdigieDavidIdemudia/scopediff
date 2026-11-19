@@ -74,7 +74,7 @@ The AI Diff Analyst is a real hybrid-inference feature, not a wrapper around a c
 - The response's `inferenceSource` is shown in the UI as `on_device` or `in_cloud`, so the user can see where the answer came from.
 - The prompt contains only public program metadata and the deterministic diff. It excludes email, UID, Slack webhook and private testing targets, and the model is instructed to use review language only. The deterministic Python diff remains the source of truth; the AI explains it.
 
-Cloud fallback is verified in the deployed app. The on-device path requires Chrome Desktop 139+ with Gemini Nano; it is configured in code but cannot be exercised in a headless test runner.
+Cloud fallback is verified in the deployed app. The on-device path was verified on Chrome Desktop 157 with the Gemini Nano CPU backend: the UI reported `ON-DEVICE INFERENCE` in 67,811 ms. This machine's default GPU profile marked Nano unavailable, so the CPU backend was forced for the test; the same Firebase AI Logic code path runs on supported Chrome hardware.
 
 ### Challenges
 
@@ -202,6 +202,7 @@ Recommended order:
 6. `docs/screenshots/admin.png` — worker/source status
 7. `docs/screenshots/feed-dark.png` — dark mode
 8. `docs/screenshots/feed-mobile.png` — mobile layout
+9. `docs/screenshots/ai-on-device.png` — verified on-device inference (Gemini Nano CPU backend)
 
 ---
 
@@ -210,7 +211,7 @@ Recommended order:
 - The public demo uses a fictional sandbox program with RFC 2606 domains and RFC 5737 ranges.
 - Live accounts use real public program metadata only when the user adds a supported URL.
 - The HackerOne token is configured in GitHub Actions secrets, not in the client.
-- AI Logic uses the Gemini Developer API on the Spark plan. On-device inference is Chrome-on-Desktop only; other browsers automatically use the cloud fallback.
+- AI Logic uses the Gemini Developer API on the Spark plan. On-device inference is Chrome-on-Desktop only; the demo video's AI scene shows a verified `ON_DEVICE` result from the Gemini Nano CPU backend. Other browsers automatically use the cloud fallback.
 - The repository is public for judging. HackerOne credentials and the Firebase service account live only in GitHub Actions secrets.
 - The security assessment is in [OWASP_ASSESSMENT.md](OWASP_ASSESSMENT.md).
 

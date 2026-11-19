@@ -26,6 +26,19 @@ const schema = Schema.object({
   },
 });
 
+// The on-device Prompt API takes a plain JSON Schema as its response
+// constraint, so keep an equivalent object rather than passing the SDK wrapper.
+const onDeviceSchema = {
+  type: "object",
+  properties: {
+    summary: { type: "string" },
+    why_it_matters: { type: "string" },
+    review_first: { type: "array", items: { type: "string" } },
+    caveats: { type: "array", items: { type: "string" } },
+  },
+  required: ["summary", "why_it_matters", "review_first", "caveats"],
+};
+
 const systemInstruction = [
   "You are a bug bounty scope analyst.",
   "Use only the supplied public scope-diff facts.",
@@ -66,7 +79,7 @@ async function getModel() {
           ],
         },
         promptOptions: {
-          responseConstraint: schema,
+          responseConstraint: onDeviceSchema,
         },
       },
     });
@@ -141,12 +154,22 @@ function parseInsight(text: string): Omit<DiffInsight, "inferenceSource" | "late
     .trim()
     .replace(/^```(?:json)?\s*/i, "")
     .replace(/\s*```$/, "");
-  const parsed = JSON.parse(cleaned) as {
+  let parsed: {
     summary?: unknown;
     why_it_matters?: unknown;
     review_first?: unknown;
     caveats?: unknown;
   };
+  try {
+    parsed = JSON.parse(cleaned) as typeof parsed;
+  } catch {
+    return {
+      summary: short(cleaned, 500) || "The scope revision changed.",
+      why_it_matters: "Review the exact diff before testing.",
+      review_first: [],
+      caveats: ["The model did not return the requested JSON structure."],
+    };
+  }
   return {
     summary: short(parsed.summary, 500) || "The scope revision changed.",
     why_it_matters: short(parsed.why_it_matters, 500) || "Review the exact diff before testing.",

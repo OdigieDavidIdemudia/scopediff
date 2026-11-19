@@ -299,7 +299,7 @@ Invoke-RestMethod -Method Post `
 - **Publication:** [https://odigiedavididemudia.github.io/scopediff-publication/](https://odigiedavididemudia.github.io/scopediff-publication/) - static GitHub Pages technical record.
 - **Auth:** email/password + Google enabled.
 - **Firestore:** database, rules and indexes deployed.
-- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device preference configured; on-device model initialization runs from the AI action. App Check initialization is wired but production key/enforcement is pending.
+- **Hybrid AI:** Firebase AI Logic enabled; Gemini Developer API cloud fallback verified; on-device path verified with the Gemini Nano CPU backend (`ON_DEVICE`, 67.8s); App Check initialization wired with a reCAPTCHA v3 site key, enforcement pending.
 - **Live data:** browser reads/writes Firestore directly; no paid worker API.
 - **Cron:** public GitHub repo with a 30-minute Actions workflow.
 - **Repo:** [OdigieDavidIdemudia/scopediff](https://github.com/OdigieDavidIdemudia/scopediff) (public).
@@ -442,7 +442,7 @@ deterministic.
   would need a collection-group index and pagination at scale.
 - The sandbox simulator is a demo tool, not a production admin surface.
 - Firestore client persistence can take several seconds on the first live paint.
-- On-device web inference is Chrome-on-Desktop only; other browsers use cloud fallback.
+- On-device web inference is Chrome-on-Desktop only; it was verified on Chrome 157 with the Gemini Nano CPU backend (`ON_DEVICE`, 67.8s). Other browsers use cloud fallback.
 - App Check initialization is wired in the client, but the deployed build still needs a
   reCAPTCHA v3 site key and App Check enforcement for AI Logic (see below).
 
